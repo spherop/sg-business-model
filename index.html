@@ -1310,6 +1310,515 @@
         .bp-curve-badge {
             font-size: 14px;
         }
+
+        /* Costs View Styles */
+        .costs-view {
+            padding-top: 32px;
+        }
+
+        .costs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+        }
+
+        .costs-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .costs-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .action-btn.add-cost {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn.add-cost:hover {
+            background: rgba(0, 245, 212, 0.1);
+        }
+
+        .costs-totals-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .cost-total-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cost-total-card.grand {
+            border-color: var(--accent-magenta);
+            background: rgba(247, 37, 133, 0.05);
+        }
+
+        .cost-total-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .cost-total-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-magenta);
+        }
+
+        .cost-total-card.grand .cost-total-amount {
+            font-size: 1.8rem;
+        }
+
+        .cost-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .cost-category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cost-category-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cost-category-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .cost-category-badge {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .cost-category-badge.infrastructure {
+            background: rgba(0, 245, 212, 0.15);
+            color: var(--accent-cyan);
+        }
+
+        .cost-category-badge.payroll {
+            background: rgba(247, 37, 133, 0.15);
+            color: var(--accent-magenta);
+        }
+
+        .cost-category-badge.opex {
+            background: rgba(254, 228, 64, 0.15);
+            color: var(--accent-yellow);
+        }
+
+        .cost-category-badge.marketing {
+            background: rgba(123, 44, 191, 0.15);
+            color: var(--accent-purple);
+        }
+
+        .cost-category-total {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .cost-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .cost-card {
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .cost-card:not(.inactive):hover {
+            border-color: var(--accent-cyan);
+        }
+
+        .cost-card.inactive {
+            opacity: 0.4;
+        }
+
+        .cost-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .cost-card-header .toggle {
+            flex-shrink: 0;
+        }
+
+        .cost-name {
+            flex: 1;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .cost-delete {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0 4px;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .cost-delete:hover {
+            color: #ff6b6b;
+        }
+
+        .cost-amounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .cost-year-input {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .cost-year-input label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .cost-year-input input {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            color: var(--text-primary);
+            width: 100%;
+        }
+
+        .cost-year-input input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        .cost-notes {
+            margin-top: 12px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Cost Modal Styles */
+        .modal-overlay#costModalOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay#costModalOverlay.active {
+            display: flex;
+        }
+
+        .cost-modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .cost-modal .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .cost-modal .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .cost-modal .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .cost-modal .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-field {
+            margin-bottom: 20px;
+        }
+
+        .modal-field label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .modal-field input,
+        .modal-field select {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .modal-field input:focus,
+        .modal-field select:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        .modal-field-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .modal-btn.cancel {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .modal-btn.cancel:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+        }
+
+        .modal-btn.save {
+            background: var(--accent-cyan);
+            border: none;
+            color: var(--bg-dark);
+        }
+
+        .modal-btn.save:hover {
+            background: #00d4b8;
+        }
+
+        /* Business Plan Profitability Styles */
+        .bp-profitability-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .bp-profitability-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bp-profit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .bp-profit-card.y1 { border-left: 3px solid var(--accent-cyan); }
+        .bp-profit-card.y2 { border-left: 3px solid var(--accent-magenta); }
+        .bp-profit-card.y3 { border-left: 3px solid var(--accent-yellow); }
+
+        .bp-profit-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 13px;
+        }
+
+        .bp-profit-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .bp-profit-row span:last-child {
+            font-family: 'Space Mono', monospace;
+        }
+
+        .bp-profit-row.revenue span:last-child { color: var(--accent-cyan); }
+        .bp-profit-row.costs span:last-child { color: var(--accent-magenta); }
+        .bp-profit-row.profit span:last-child { color: var(--accent-yellow); }
+        .bp-profit-row.profit.negative span:last-child { color: #ff6b6b; }
+
+        .bp-grand-totals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .bp-grand-total-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .bp-grand-total-card.revenue { border-color: rgba(0, 245, 212, 0.3); }
+        .bp-grand-total-card.costs { border-color: rgba(247, 37, 133, 0.3); }
+        .bp-grand-total-card.profit { border-color: rgba(254, 228, 64, 0.3); }
+
+        .bp-grand-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .bp-grand-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .bp-grand-total-card.revenue .bp-grand-amount { color: var(--accent-cyan); }
+        .bp-grand-total-card.costs .bp-grand-amount { color: var(--accent-magenta); }
+        .bp-grand-total-card.profit .bp-grand-amount { color: var(--accent-yellow); }
+
+        .bp-margin-badge {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            background: rgba(254, 228, 64, 0.15);
+            color: var(--accent-yellow);
+        }
+
+        .bp-margin-badge.negative {
+            background: rgba(255, 107, 107, 0.15);
+            color: #ff6b6b;
+        }
+
+        .bp-margin-badge.positive {
+            background: rgba(0, 245, 212, 0.15);
+            color: var(--accent-cyan);
+        }
+
+        .bp-profit-margin {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+            background: rgba(254, 228, 64, 0.1);
+            color: var(--accent-yellow);
+        }
+
+        .bp-profit-margin.negative {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+        }
+
+        .bp-profit-margin.positive {
+            background: rgba(0, 245, 212, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        .bp-profit-year {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
     </style>
 </head>
 <body>
@@ -1339,6 +1848,7 @@
             <p class="subtitle">Model growth curves and revenue projections across 3 years with realistic user ramps.</p>
             <div class="view-tabs">
                 <button class="view-tab active" data-view="calculator">Calculator</button>
+                <button class="view-tab" data-view="costs">Costs</button>
                 <button class="view-tab" data-view="business-plan">Business Plan</button>
             </div>
         </header>
@@ -1537,6 +2047,151 @@
 
         </div><!-- End Calculator View -->
 
+        <!-- Costs View -->
+        <div class="view-container costs-view" id="costsView">
+
+            <!-- Costs Header -->
+            <div class="costs-header">
+                <div class="costs-header-left">
+                    <h2 class="costs-title">Cost Structure</h2>
+                    <p class="costs-subtitle">Model your operating costs across infrastructure, payroll, and marketing</p>
+                </div>
+                <div class="costs-header-right">
+                    <button class="action-btn add-cost" onclick="openCostModal()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Add Cost
+                    </button>
+                </div>
+            </div>
+
+            <!-- Costs Totals Summary -->
+            <div class="costs-totals-summary">
+                <div class="cost-total-card">
+                    <div class="cost-total-label">Year 1 Total</div>
+                    <div class="cost-total-amount" id="costTotalY1">$0</div>
+                </div>
+                <div class="cost-total-card">
+                    <div class="cost-total-label">Year 2 Total</div>
+                    <div class="cost-total-amount" id="costTotalY2">$0</div>
+                </div>
+                <div class="cost-total-card">
+                    <div class="cost-total-label">Year 3 Total</div>
+                    <div class="cost-total-amount" id="costTotalY3">$0</div>
+                </div>
+                <div class="cost-total-card grand">
+                    <div class="cost-total-label">3-Year Total</div>
+                    <div class="cost-total-amount" id="costTotalAll">$0</div>
+                </div>
+            </div>
+
+            <!-- Infrastructure Costs -->
+            <div class="cost-category" id="infrastructureCosts">
+                <div class="cost-category-header">
+                    <div class="cost-category-title">
+                        <span class="cost-category-badge infrastructure">Infrastructure</span>
+                        <span class="cost-category-name">Cloud & Platform Costs</span>
+                    </div>
+                    <div class="cost-category-total" id="infraTotal">$0</div>
+                </div>
+                <div class="cost-items-grid" id="infraCostItems">
+                    <!-- Cost items rendered by JS -->
+                </div>
+            </div>
+
+            <!-- Payroll Costs -->
+            <div class="cost-category" id="payrollCosts">
+                <div class="cost-category-header">
+                    <div class="cost-category-title">
+                        <span class="cost-category-badge payroll">Payroll</span>
+                        <span class="cost-category-name">Team & Personnel</span>
+                    </div>
+                    <div class="cost-category-total" id="payrollTotal">$0</div>
+                </div>
+                <div class="cost-items-grid" id="payrollCostItems">
+                    <!-- Cost items rendered by JS -->
+                </div>
+            </div>
+
+            <!-- OpEx Costs -->
+            <div class="cost-category" id="opexCosts">
+                <div class="cost-category-header">
+                    <div class="cost-category-title">
+                        <span class="cost-category-badge opex">OpEx</span>
+                        <span class="cost-category-name">Operational Expenses</span>
+                    </div>
+                    <div class="cost-category-total" id="opexTotal">$0</div>
+                </div>
+                <div class="cost-items-grid" id="opexCostItems">
+                    <!-- Cost items rendered by JS -->
+                </div>
+            </div>
+
+            <!-- Marketing Costs -->
+            <div class="cost-category" id="marketingCosts">
+                <div class="cost-category-header">
+                    <div class="cost-category-title">
+                        <span class="cost-category-badge marketing">Marketing</span>
+                        <span class="cost-category-name">Customer Acquisition</span>
+                    </div>
+                    <div class="cost-category-total" id="marketingTotal">$0</div>
+                </div>
+                <div class="cost-items-grid" id="marketingCostItems">
+                    <!-- Cost items rendered by JS -->
+                </div>
+            </div>
+
+        </div><!-- End Costs View -->
+
+        <!-- Cost Modal -->
+        <div class="modal-overlay" id="costModalOverlay" onclick="closeCostModal()">
+            <div class="cost-modal" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <h3>Add New Cost</h3>
+                    <button class="modal-close" onclick="closeCostModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-field">
+                        <label>Cost Name</label>
+                        <input type="text" id="costName" placeholder="e.g., Server Hosting">
+                    </div>
+                    <div class="modal-field">
+                        <label>Category</label>
+                        <select id="costCategory">
+                            <option value="infrastructure">Infrastructure</option>
+                            <option value="payroll">Payroll</option>
+                            <option value="opex">OpEx</option>
+                            <option value="marketing">Marketing</option>
+                        </select>
+                    </div>
+                    <div class="modal-field-row">
+                        <div class="modal-field">
+                            <label>Year 1 Cost</label>
+                            <input type="number" id="costY1" placeholder="0" min="0">
+                        </div>
+                        <div class="modal-field">
+                            <label>Year 2 Cost</label>
+                            <input type="number" id="costY2" placeholder="0" min="0">
+                        </div>
+                        <div class="modal-field">
+                            <label>Year 3 Cost</label>
+                            <input type="number" id="costY3" placeholder="0" min="0">
+                        </div>
+                    </div>
+                    <div class="modal-field">
+                        <label>Notes (optional)</label>
+                        <input type="text" id="costNotes" placeholder="Additional details...">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel" onclick="closeCostModal()">Cancel</button>
+                    <button class="modal-btn save" onclick="saveCostItem()">Add Cost</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Business Plan View -->
         <div class="view-container business-plan-view" id="businessPlanView">
 
@@ -1554,28 +2209,82 @@
 
             <!-- Executive Summary -->
             <div class="bp-section">
-                <div class="executive-summary">
-                    <div class="es-total-label">3-Year Projected Revenue</div>
-                    <div class="es-total-amount" id="bpTotalRevenue">$0</div>
-                    <div class="es-total-period">Total across all active revenue streams</div>
+                <div class="bp-grand-totals">
+                    <div class="bp-grand-total-card revenue">
+                        <div class="bp-grand-label">3-Year Revenue</div>
+                        <div class="bp-grand-amount" id="bpTotalRevenue">$0</div>
+                    </div>
+                    <div class="bp-grand-total-card costs">
+                        <div class="bp-grand-label">3-Year Costs</div>
+                        <div class="bp-grand-amount" id="bpTotalCosts">$0</div>
+                    </div>
+                    <div class="bp-grand-total-card profit">
+                        <div class="bp-grand-label">3-Year Profit</div>
+                        <div class="bp-grand-amount" id="bpTotalProfit">$0</div>
+                        <div class="bp-margin-badge" id="bpTotalMargin">0%</div>
+                    </div>
                 </div>
 
-                <div class="bp-metric-grid">
-                    <div class="bp-metric-box">
-                        <div class="bp-metric-label">Year 1</div>
-                        <div class="bp-metric-value y1" id="bpY1Revenue">$0</div>
+                <!-- Profitability Grid -->
+                <div class="bp-profitability-grid">
+                    <div class="bp-profit-card y1">
+                        <div class="bp-profit-year">Year 1</div>
+                        <div class="bp-profit-row">
+                            <span>Revenue</span>
+                            <span id="bpY1Revenue">$0</span>
+                        </div>
+                        <div class="bp-profit-row">
+                            <span>Costs</span>
+                            <span id="bpY1Costs">$0</span>
+                        </div>
+                        <div class="bp-profit-row profit">
+                            <span>Profit</span>
+                            <span id="bpY1Profit">$0</span>
+                        </div>
+                        <div class="bp-profit-margin" id="bpY1Margin">0%</div>
                     </div>
-                    <div class="bp-metric-box">
-                        <div class="bp-metric-label">Year 2</div>
-                        <div class="bp-metric-value y2" id="bpY2Revenue">$0</div>
+                    <div class="bp-profit-card y2">
+                        <div class="bp-profit-year">Year 2</div>
+                        <div class="bp-profit-row">
+                            <span>Revenue</span>
+                            <span id="bpY2Revenue">$0</span>
+                        </div>
+                        <div class="bp-profit-row">
+                            <span>Costs</span>
+                            <span id="bpY2Costs">$0</span>
+                        </div>
+                        <div class="bp-profit-row profit">
+                            <span>Profit</span>
+                            <span id="bpY2Profit">$0</span>
+                        </div>
+                        <div class="bp-profit-margin" id="bpY2Margin">0%</div>
                     </div>
-                    <div class="bp-metric-box">
-                        <div class="bp-metric-label">Year 3</div>
-                        <div class="bp-metric-value y3" id="bpY3Revenue">$0</div>
+                    <div class="bp-profit-card y3">
+                        <div class="bp-profit-year">Year 3</div>
+                        <div class="bp-profit-row">
+                            <span>Revenue</span>
+                            <span id="bpY3Revenue">$0</span>
+                        </div>
+                        <div class="bp-profit-row">
+                            <span>Costs</span>
+                            <span id="bpY3Costs">$0</span>
+                        </div>
+                        <div class="bp-profit-row profit">
+                            <span>Profit</span>
+                            <span id="bpY3Profit">$0</span>
+                        </div>
+                        <div class="bp-profit-margin" id="bpY3Margin">0%</div>
                     </div>
+                </div>
+
+                <div class="bp-metric-grid" style="margin-top: 24px;">
                     <div class="bp-metric-box">
-                        <div class="bp-metric-label">Active Streams</div>
+                        <div class="bp-metric-label">Active Revenue Streams</div>
                         <div class="bp-metric-value streams" id="bpActiveStreams">0</div>
+                    </div>
+                    <div class="bp-metric-box">
+                        <div class="bp-metric-label">Active Cost Items</div>
+                        <div class="bp-metric-value streams" id="bpActiveCosts">0</div>
                     </div>
                 </div>
 
@@ -1606,6 +2315,26 @@
                         </tr>
                     </thead>
                     <tbody id="bpStreamTableBody">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Costs by Category -->
+            <div class="bp-section">
+                <h3 class="bp-section-title">Cost Breakdown</h3>
+                <table class="bp-table">
+                    <thead>
+                        <tr>
+                            <th>Cost Item</th>
+                            <th>Category</th>
+                            <th>Year 1</th>
+                            <th>Year 2</th>
+                            <th>Year 3</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bpCostTableBody">
                         <!-- Rendered by JS -->
                     </tbody>
                 </table>
@@ -1727,6 +2456,8 @@
                 growthCurve,
                 revenueStreams,
                 nextId,
+                costItems,
+                nextCostId,
                 growthInputs: {
                     y1StartArtists: document.getElementById('y1StartArtists').value,
                     y1EndArtists: document.getElementById('y1EndArtists').value,
@@ -1772,6 +2503,8 @@
                 if (state.growthCurve) growthCurve = state.growthCurve;
                 if (state.revenueStreams) revenueStreams = state.revenueStreams;
                 if (state.nextId) nextId = state.nextId;
+                if (state.costItems) costItems = state.costItems;
+                if (state.nextCostId) nextCostId = state.nextCostId;
 
                 // Update UI to reflect loaded state
                 document.querySelectorAll('.curve-btn').forEach(btn => {
@@ -2081,6 +2814,46 @@
 
         let nextId = 16;
 
+        // Cost items - categorized by type
+        let costItems = [
+            // Infrastructure Costs (annual amounts)
+            { id: 1, name: "Storage (S3)", category: "infrastructure", active: true, y1: 9600, y2: 30000, y3: 90000, notes: "" },
+            { id: 2, name: "CDN (CloudFront)", category: "infrastructure", active: true, y1: 42000, y2: 144000, y3: 420000, notes: "" },
+            { id: 3, name: "Database (Supabase)", category: "infrastructure", active: true, y1: 4800, y2: 18000, y3: 60000, notes: "" },
+            { id: 4, name: "Compute (Vercel)", category: "infrastructure", active: true, y1: 6000, y2: 24000, y3: 96000, notes: "" },
+            { id: 5, name: "AI Generation", category: "infrastructure", active: true, y1: 144000, y2: 540000, y3: 1800000, notes: "" },
+            { id: 6, name: "Email (Resend)", category: "infrastructure", active: true, y1: 2400, y2: 7200, y3: 24000, notes: "" },
+            { id: 7, name: "Other Infrastructure", category: "infrastructure", active: true, y1: 3600, y2: 9600, y3: 30000, notes: "" },
+
+            // Payroll Costs (annual amounts)
+            { id: 8, name: "Engineering", category: "payroll", active: true, y1: 480000, y2: 960000, y3: 2400000, notes: "" },
+            { id: 9, name: "Product & Design", category: "payroll", active: true, y1: 150000, y2: 300000, y3: 600000, notes: "" },
+            { id: 10, name: "Marketing & Growth", category: "payroll", active: true, y1: 200000, y2: 600000, y3: 2000000, notes: "" },
+            { id: 11, name: "Operations & Support", category: "payroll", active: true, y1: 100000, y2: 300000, y3: 800000, notes: "" },
+            { id: 12, name: "Sales", category: "payroll", active: false, y1: 0, y2: 200000, y3: 600000, notes: "Starts Y2" },
+            { id: 13, name: "G&A", category: "payroll", active: true, y1: 150000, y2: 400000, y3: 1000000, notes: "" },
+            { id: 14, name: "Executive", category: "payroll", active: true, y1: 300000, y2: 500000, y3: 1000000, notes: "" },
+
+            // OpEx Costs (annual amounts)
+            { id: 15, name: "Office & Facilities", category: "opex", active: true, y1: 50000, y2: 150000, y3: 500000, notes: "" },
+            { id: 16, name: "Software & Tools", category: "opex", active: true, y1: 30000, y2: 100000, y3: 300000, notes: "" },
+            { id: 17, name: "Legal & Compliance", category: "opex", active: true, y1: 50000, y2: 150000, y3: 400000, notes: "" },
+            { id: 18, name: "Insurance", category: "opex", active: true, y1: 20000, y2: 50000, y3: 150000, notes: "" },
+            { id: 19, name: "Travel & Events", category: "opex", active: true, y1: 30000, y2: 100000, y3: 300000, notes: "" },
+            { id: 20, name: "Professional Services", category: "opex", active: true, y1: 50000, y2: 150000, y3: 400000, notes: "" },
+            { id: 21, name: "Contingency", category: "opex", active: true, y1: 23000, y2: 70000, y3: 205000, notes: "" },
+
+            // Marketing/CAC Costs (annual amounts)
+            { id: 22, name: "Paid Social", category: "marketing", active: true, y1: 100000, y2: 500000, y3: 2000000, notes: "" },
+            { id: 23, name: "Content & SEO", category: "marketing", active: true, y1: 50000, y2: 200000, y3: 500000, notes: "" },
+            { id: 24, name: "Influencer/Creator", category: "marketing", active: true, y1: 100000, y2: 400000, y3: 1500000, notes: "" },
+            { id: 25, name: "PR & Brand", category: "marketing", active: true, y1: 50000, y2: 200000, y3: 500000, notes: "" },
+            { id: 26, name: "Events & Sponsorships", category: "marketing", active: false, y1: 0, y2: 100000, y3: 500000, notes: "Starts Y2" },
+            { id: 27, name: "Referral Programs", category: "marketing", active: true, y1: 50000, y2: 200000, y3: 1000000, notes: "" }
+        ];
+
+        let nextCostId = 28;
+
         // Growth curve functions
         function getGrowthValue(start, end, month, totalMonths, curve) {
             const t = month / totalMonths;
@@ -2306,6 +3079,167 @@
                     }
                 }
             });
+        }
+
+        // Cost calculation functions
+        function calculateCostsByYear(year) {
+            return costItems
+                .filter(c => c.active)
+                .reduce((sum, c) => sum + (year === 1 ? c.y1 : year === 2 ? c.y2 : c.y3), 0);
+        }
+
+        function calculateCostsByCategory(category) {
+            return costItems
+                .filter(c => c.active && c.category === category)
+                .reduce((sum, c) => sum + c.y1 + c.y2 + c.y3, 0);
+        }
+
+        function getCategoryTotal(category, year) {
+            return costItems
+                .filter(c => c.active && c.category === category)
+                .reduce((sum, c) => sum + (year === 1 ? c.y1 : year === 2 ? c.y2 : c.y3), 0);
+        }
+
+        function getTotalCosts() {
+            return costItems
+                .filter(c => c.active)
+                .reduce((sum, c) => sum + c.y1 + c.y2 + c.y3, 0);
+        }
+
+        // Render costs view
+        function renderCostsView() {
+            const categories = ['infrastructure', 'payroll', 'opex', 'marketing'];
+            const categoryContainers = {
+                'infrastructure': 'infraCostItems',
+                'payroll': 'payrollCostItems',
+                'opex': 'opexCostItems',
+                'marketing': 'marketingCostItems'
+            };
+            const categoryTotals = {
+                'infrastructure': 'infraTotal',
+                'payroll': 'payrollTotal',
+                'opex': 'opexTotal',
+                'marketing': 'marketingTotal'
+            };
+
+            categories.forEach(category => {
+                const container = document.getElementById(categoryContainers[category]);
+                const items = costItems.filter(c => c.category === category);
+
+                container.innerHTML = items.map(cost => `
+                    <div class="cost-card ${cost.active ? '' : 'inactive'}" data-id="${cost.id}">
+                        <div class="cost-card-header">
+                            <label class="toggle">
+                                <input type="checkbox" ${cost.active ? 'checked' : ''} onchange="toggleCost(${cost.id})">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="cost-name">${cost.name}</span>
+                            <button class="cost-delete" onclick="deleteCost(${cost.id})" title="Delete cost">&times;</button>
+                        </div>
+                        <div class="cost-amounts">
+                            <div class="cost-year-input">
+                                <label>Y1</label>
+                                <input type="text" value="${formatCurrency(cost.y1)}"
+                                    onchange="updateCostAmount(${cost.id}, 'y1', this.value)"
+                                    onfocus="this.value = ${cost.y1}"
+                                    onblur="this.value = formatCurrency(${cost.y1})">
+                            </div>
+                            <div class="cost-year-input">
+                                <label>Y2</label>
+                                <input type="text" value="${formatCurrency(cost.y2)}"
+                                    onchange="updateCostAmount(${cost.id}, 'y2', this.value)"
+                                    onfocus="this.value = ${cost.y2}"
+                                    onblur="this.value = formatCurrency(${cost.y2})">
+                            </div>
+                            <div class="cost-year-input">
+                                <label>Y3</label>
+                                <input type="text" value="${formatCurrency(cost.y3)}"
+                                    onchange="updateCostAmount(${cost.id}, 'y3', this.value)"
+                                    onfocus="this.value = ${cost.y3}"
+                                    onblur="this.value = formatCurrency(${cost.y3})">
+                            </div>
+                        </div>
+                        ${cost.notes ? `<div class="cost-notes">${cost.notes}</div>` : ''}
+                    </div>
+                `).join('');
+
+                // Update category total
+                const total = getCategoryTotal(category, 1) + getCategoryTotal(category, 2) + getCategoryTotal(category, 3);
+                document.getElementById(categoryTotals[category]).textContent = formatCurrency(total);
+            });
+
+            // Update summary totals
+            document.getElementById('costTotalY1').textContent = formatCurrency(calculateCostsByYear(1));
+            document.getElementById('costTotalY2').textContent = formatCurrency(calculateCostsByYear(2));
+            document.getElementById('costTotalY3').textContent = formatCurrency(calculateCostsByYear(3));
+            document.getElementById('costTotalAll').textContent = formatCurrency(getTotalCosts());
+        }
+
+        function toggleCost(id) {
+            const cost = costItems.find(c => c.id === id);
+            if (cost) {
+                cost.active = !cost.active;
+                renderCostsView();
+                saveState();
+            }
+        }
+
+        function updateCostAmount(id, yearKey, value) {
+            const cost = costItems.find(c => c.id === id);
+            if (cost) {
+                // Parse currency input
+                const numValue = parseFloat(value.replace(/[^0-9.-]/g, '')) || 0;
+                cost[yearKey] = numValue;
+                renderCostsView();
+                saveState();
+            }
+        }
+
+        function deleteCost(id) {
+            if (confirm('Delete this cost item?')) {
+                costItems = costItems.filter(c => c.id !== id);
+                renderCostsView();
+                saveState();
+            }
+        }
+
+        // Cost modal functions
+        function openCostModal() {
+            document.getElementById('costModalOverlay').classList.add('active');
+            document.getElementById('costName').value = '';
+            document.getElementById('costCategory').value = 'infrastructure';
+            document.getElementById('costY1').value = '';
+            document.getElementById('costY2').value = '';
+            document.getElementById('costY3').value = '';
+            document.getElementById('costNotes').value = '';
+        }
+
+        function closeCostModal() {
+            document.getElementById('costModalOverlay').classList.remove('active');
+        }
+
+        function saveCostItem() {
+            const name = document.getElementById('costName').value.trim();
+            if (!name) {
+                alert('Please enter a cost name');
+                return;
+            }
+
+            const newCost = {
+                id: nextCostId++,
+                name: name,
+                category: document.getElementById('costCategory').value,
+                active: true,
+                y1: parseFloat(document.getElementById('costY1').value) || 0,
+                y2: parseFloat(document.getElementById('costY2').value) || 0,
+                y3: parseFloat(document.getElementById('costY3').value) || 0,
+                notes: document.getElementById('costNotes').value.trim()
+            };
+
+            costItems.push(newCost);
+            closeCostModal();
+            renderCostsView();
+            saveState();
         }
 
         function renderStreams() {
@@ -2584,6 +3518,9 @@
 
             if (viewName === 'calculator') {
                 document.getElementById('calculatorView').classList.add('active');
+            } else if (viewName === 'costs') {
+                document.getElementById('costsView').classList.add('active');
+                renderCostsView();
             } else {
                 document.getElementById('businessPlanView').classList.add('active');
                 renderBusinessPlanView();
@@ -2591,18 +3528,65 @@
         }
 
         function renderBusinessPlanView() {
-            const y1Total = calculateYearlyRevenue(1);
-            const y2Total = calculateYearlyRevenue(2);
-            const y3Total = calculateYearlyRevenue(3);
-            const grandTotal = y1Total + y2Total + y3Total;
+            // Revenue calculations
+            const y1Rev = calculateYearlyRevenue(1);
+            const y2Rev = calculateYearlyRevenue(2);
+            const y3Rev = calculateYearlyRevenue(3);
+            const totalRev = y1Rev + y2Rev + y3Rev;
             const activeStreams = revenueStreams.filter(s => s.active).length;
 
-            // Update summary metrics
-            document.getElementById('bpTotalRevenue').textContent = formatCurrency(grandTotal);
-            document.getElementById('bpY1Revenue').textContent = formatCurrency(y1Total);
-            document.getElementById('bpY2Revenue').textContent = formatCurrency(y2Total);
-            document.getElementById('bpY3Revenue').textContent = formatCurrency(y3Total);
+            // Cost calculations
+            const y1Cost = calculateCostsByYear(1);
+            const y2Cost = calculateCostsByYear(2);
+            const y3Cost = calculateCostsByYear(3);
+            const totalCost = y1Cost + y2Cost + y3Cost;
+            const activeCosts = costItems.filter(c => c.active).length;
+
+            // Profit calculations
+            const y1Profit = y1Rev - y1Cost;
+            const y2Profit = y2Rev - y2Cost;
+            const y3Profit = y3Rev - y3Cost;
+            const totalProfit = totalRev - totalCost;
+
+            // Margin calculations
+            const y1Margin = y1Rev > 0 ? (y1Profit / y1Rev * 100) : 0;
+            const y2Margin = y2Rev > 0 ? (y2Profit / y2Rev * 100) : 0;
+            const y3Margin = y3Rev > 0 ? (y3Profit / y3Rev * 100) : 0;
+            const totalMargin = totalRev > 0 ? (totalProfit / totalRev * 100) : 0;
+
+            // Update grand totals
+            document.getElementById('bpTotalRevenue').textContent = formatCurrency(totalRev);
+            document.getElementById('bpTotalCosts').textContent = formatCurrency(totalCost);
+            document.getElementById('bpTotalProfit').textContent = formatCurrency(totalProfit);
+            const totalMarginEl = document.getElementById('bpTotalMargin');
+            totalMarginEl.textContent = totalMargin.toFixed(1) + '% margin';
+            totalMarginEl.className = 'bp-margin-badge ' + (totalProfit >= 0 ? 'positive' : 'negative');
+
+            // Update yearly profitability cards
+            document.getElementById('bpY1Revenue').textContent = formatCurrency(y1Rev);
+            document.getElementById('bpY1Costs').textContent = formatCurrency(y1Cost);
+            document.getElementById('bpY1Profit').textContent = formatCurrency(y1Profit);
+            const y1MarginEl = document.getElementById('bpY1Margin');
+            y1MarginEl.textContent = y1Margin.toFixed(1) + '%';
+            y1MarginEl.className = 'bp-profit-margin ' + (y1Profit >= 0 ? 'positive' : 'negative');
+
+            document.getElementById('bpY2Revenue').textContent = formatCurrency(y2Rev);
+            document.getElementById('bpY2Costs').textContent = formatCurrency(y2Cost);
+            document.getElementById('bpY2Profit').textContent = formatCurrency(y2Profit);
+            const y2MarginEl = document.getElementById('bpY2Margin');
+            y2MarginEl.textContent = y2Margin.toFixed(1) + '%';
+            y2MarginEl.className = 'bp-profit-margin ' + (y2Profit >= 0 ? 'positive' : 'negative');
+
+            document.getElementById('bpY3Revenue').textContent = formatCurrency(y3Rev);
+            document.getElementById('bpY3Costs').textContent = formatCurrency(y3Cost);
+            document.getElementById('bpY3Profit').textContent = formatCurrency(y3Profit);
+            const y3MarginEl = document.getElementById('bpY3Margin');
+            y3MarginEl.textContent = y3Margin.toFixed(1) + '%';
+            y3MarginEl.className = 'bp-profit-margin ' + (y3Profit >= 0 ? 'positive' : 'negative');
+
+            // Update counts
             document.getElementById('bpActiveStreams').textContent = activeStreams;
+            document.getElementById('bpActiveCosts').textContent = activeCosts;
             document.getElementById('bpGrowthCurve').textContent = growthCurve.charAt(0).toUpperCase() + growthCurve.slice(1);
 
             // Render growth assumptions
@@ -2653,6 +3637,9 @@
 
             // Render revenue by stream table
             renderBPStreamTable();
+
+            // Render costs table
+            renderBPCostTable();
 
             // Render growth chart
             renderBPChart();
@@ -2753,6 +3740,55 @@
             `;
 
             document.getElementById('bpStreamTableBody').innerHTML = html;
+        }
+
+        function renderBPCostTable() {
+            const categoryOrder = { 'infrastructure': 1, 'payroll': 2, 'opex': 3, 'marketing': 4 };
+            const categoryLabels = {
+                'infrastructure': 'Infrastructure',
+                'payroll': 'Payroll',
+                'opex': 'OpEx',
+                'marketing': 'Marketing'
+            };
+
+            // Sort by category
+            const sortedCosts = [...costItems]
+                .filter(c => c.active)
+                .sort((a, b) => categoryOrder[a.category] - categoryOrder[b.category]);
+
+            let html = '';
+            let totalY1 = 0, totalY2 = 0, totalY3 = 0, totalAll = 0;
+
+            sortedCosts.forEach(c => {
+                const total = c.y1 + c.y2 + c.y3;
+                const categoryClass = c.category;
+                html += `
+                    <tr>
+                        <td>${c.name}</td>
+                        <td><span class="cost-category-badge ${categoryClass}">${categoryLabels[c.category]}</span></td>
+                        <td class="y1-value">${formatCurrency(c.y1)}</td>
+                        <td class="y2-value">${formatCurrency(c.y2)}</td>
+                        <td class="y3-value">${formatCurrency(c.y3)}</td>
+                        <td>${formatCurrency(total)}</td>
+                    </tr>
+                `;
+                totalY1 += c.y1;
+                totalY2 += c.y2;
+                totalY3 += c.y3;
+                totalAll += total;
+            });
+
+            html += `
+                <tr class="total-row">
+                    <td colspan="2"><strong>Total Costs</strong></td>
+                    <td class="y1-value">${formatCurrency(totalY1)}</td>
+                    <td class="y2-value">${formatCurrency(totalY2)}</td>
+                    <td class="y3-value">${formatCurrency(totalY3)}</td>
+                    <td>${formatCurrency(totalAll)}</td>
+                </tr>
+            `;
+
+            document.getElementById('bpCostTableBody').innerHTML = html;
         }
 
         let bpChart = null;

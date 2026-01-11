@@ -787,17 +787,564 @@
             font-size: 14px;
             color: var(--text-secondary);
         }
+
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .action-btn.export {
+            background: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        .action-btn.export:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 245, 212, 0.3);
+        }
+
+        .action-btn.reset {
+            color: var(--text-muted);
+        }
+
+        .action-btn.reset:hover {
+            border-color: var(--accent-magenta);
+            color: var(--accent-magenta);
+        }
+
+        /* Save Indicator */
+        .save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            color: var(--accent-cyan);
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .save-indicator.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .save-indicator svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Export loading state */
+        .action-btn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .action-btn.loading::after {
+            content: '';
+            width: 14px;
+            height: 14px;
+            border: 2px solid currentColor;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* View Tabs */
+        .view-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-top: 24px;
+            background: var(--bg-input);
+            padding: 4px;
+            border-radius: 12px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .view-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .view-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .view-tab.active {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        /* View Containers */
+        .view-container {
+            display: none;
+        }
+
+        .view-container.active {
+            display: block;
+        }
+
+        /* Business Plan View */
+        .business-plan-view {
+            padding-top: 32px;
+        }
+
+        .bp-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .bp-section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bp-section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        /* Executive Summary */
+        .executive-summary {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .es-total-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .es-total-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .es-total-period {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .bp-metric-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .bp-metric-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .bp-metric-box {
+            background: var(--bg-input);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .bp-metric-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .bp-metric-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .bp-metric-value.y1 { color: var(--accent-cyan); }
+        .bp-metric-value.y2 { color: var(--accent-magenta); }
+        .bp-metric-value.y3 { color: var(--accent-yellow); }
+        .bp-metric-value.streams { color: var(--text-primary); }
+
+        /* Growth Assumptions */
+        .bp-assumptions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .bp-assumptions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bp-assumption-card {
+            background: var(--bg-input);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative;
+        }
+
+        .bp-assumption-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .bp-assumption-card.y1::before { background: var(--accent-cyan); }
+        .bp-assumption-card.y2::before { background: var(--accent-magenta); }
+        .bp-assumption-card.y3::before { background: var(--accent-yellow); }
+
+        .bp-assumption-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .bp-assumption-card.y1 .bp-assumption-title { color: var(--accent-cyan); }
+        .bp-assumption-card.y2 .bp-assumption-title { color: var(--accent-magenta); }
+        .bp-assumption-card.y3 .bp-assumption-title { color: var(--accent-yellow); }
+
+        .bp-assumption-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 13px;
+        }
+
+        .bp-assumption-row span:first-child {
+            color: var(--text-secondary);
+        }
+
+        .bp-assumption-row span:last-child {
+            font-family: 'Space Mono', monospace;
+            color: var(--text-primary);
+        }
+
+        .bp-curve-badge {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 8px 16px;
+            background: var(--bg-input);
+            border-radius: 20px;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .bp-curve-badge span {
+            color: var(--accent-cyan);
+            text-transform: capitalize;
+        }
+
+        /* Business Plan Tables */
+        .bp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+        }
+
+        .bp-table th {
+            text-align: left;
+            padding: 14px 16px;
+            background: var(--bg-input);
+            color: var(--text-secondary);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 11px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .bp-table th:not(:first-child) {
+            text-align: right;
+        }
+
+        .bp-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .bp-table td:not(:first-child) {
+            text-align: right;
+        }
+
+        .bp-table tr:hover td {
+            background: rgba(26, 26, 36, 0.5);
+        }
+
+        .bp-table .phase-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bp-table .phase-badge.mvp {
+            background: rgba(0, 245, 212, 0.15);
+            color: var(--accent-cyan);
+        }
+        .bp-table .phase-badge.phase2 {
+            background: rgba(247, 37, 133, 0.15);
+            color: var(--accent-magenta);
+        }
+        .bp-table .phase-badge.phase3 {
+            background: rgba(254, 228, 64, 0.15);
+            color: var(--accent-yellow);
+        }
+
+        .bp-table .total-row {
+            background: var(--bg-input);
+            font-weight: 700;
+        }
+
+        .bp-table .total-row td {
+            border-bottom: none;
+            padding: 16px;
+        }
+
+        .bp-table .year-header {
+            background: var(--bg-input);
+        }
+
+        .bp-table .year-header td {
+            font-weight: 700;
+            color: var(--text-secondary);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .bp-table .subtotal-row {
+            background: rgba(26, 26, 36, 0.3);
+        }
+
+        .bp-table .subtotal-row td {
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .bp-table .y1-value { color: var(--accent-cyan); }
+        .bp-table .y2-value { color: var(--accent-magenta); }
+        .bp-table .y3-value { color: var(--accent-yellow); }
+
+        /* Start time selector */
+        .start-time-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .start-time-group select {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .stream-start-badge {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: var(--bg-input);
+            color: var(--text-muted);
+            margin-left: 8px;
+        }
+
+        /* Fixed Reset Button */
+        .reset-btn-fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .reset-btn-fixed:hover {
+            border-color: var(--accent-magenta);
+            color: var(--accent-magenta);
+        }
+
+        /* Business Plan Export Button */
+        .bp-export-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 24px;
+        }
+
+        /* Larger fonts for Business Plan tables */
+        .bp-table {
+            font-size: 16px;
+        }
+
+        .bp-table th {
+            font-size: 13px;
+            padding: 18px 20px;
+        }
+
+        .bp-table td {
+            padding: 16px 20px;
+        }
+
+        .bp-section-title {
+            font-size: 1.5rem;
+        }
+
+        .es-total-label {
+            font-size: 14px;
+        }
+
+        .es-total-amount {
+            font-size: 4.5rem;
+        }
+
+        .es-total-period {
+            font-size: 16px;
+        }
+
+        .bp-metric-label {
+            font-size: 12px;
+        }
+
+        .bp-metric-value {
+            font-size: 2rem;
+        }
+
+        .bp-assumption-title {
+            font-size: 12px;
+        }
+
+        .bp-assumption-row {
+            font-size: 15px;
+            padding: 8px 0;
+        }
+
+        .bp-curve-badge {
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div class="noise-overlay"></div>
-    
+
+    <!-- Save Indicator -->
+    <div class="save-indicator" id="saveIndicator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Saved
+    </div>
+
+    <!-- Reset Button (fixed position) -->
+    <button class="reset-btn-fixed" onclick="clearSavedState()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+        </svg>
+        Reset
+    </button>
+
     <div class="container">
         <header>
             <div class="logo">Sonic Grid</div>
             <h1>Revenue Calculator</h1>
             <p class="subtitle">Model growth curves and revenue projections across 3 years with realistic user ramps.</p>
+            <div class="view-tabs">
+                <button class="view-tab active" data-view="calculator">Calculator</button>
+                <button class="view-tab" data-view="business-plan">Business Plan</button>
+            </div>
         </header>
+
+        <!-- Calculator View -->
+        <div class="view-container active" id="calculatorView">
 
         <!-- Growth Settings Panel -->
         <div class="growth-panel">
@@ -987,6 +1534,107 @@
                 </tbody>
             </table>
         </div>
+
+        </div><!-- End Calculator View -->
+
+        <!-- Business Plan View -->
+        <div class="view-container business-plan-view" id="businessPlanView">
+
+            <!-- Export Bar -->
+            <div class="bp-export-bar">
+                <button class="action-btn export" id="exportBtn" onclick="exportToPDF()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Export PDF
+                </button>
+            </div>
+
+            <!-- Executive Summary -->
+            <div class="bp-section">
+                <div class="executive-summary">
+                    <div class="es-total-label">3-Year Projected Revenue</div>
+                    <div class="es-total-amount" id="bpTotalRevenue">$0</div>
+                    <div class="es-total-period">Total across all active revenue streams</div>
+                </div>
+
+                <div class="bp-metric-grid">
+                    <div class="bp-metric-box">
+                        <div class="bp-metric-label">Year 1</div>
+                        <div class="bp-metric-value y1" id="bpY1Revenue">$0</div>
+                    </div>
+                    <div class="bp-metric-box">
+                        <div class="bp-metric-label">Year 2</div>
+                        <div class="bp-metric-value y2" id="bpY2Revenue">$0</div>
+                    </div>
+                    <div class="bp-metric-box">
+                        <div class="bp-metric-label">Year 3</div>
+                        <div class="bp-metric-value y3" id="bpY3Revenue">$0</div>
+                    </div>
+                    <div class="bp-metric-box">
+                        <div class="bp-metric-label">Active Streams</div>
+                        <div class="bp-metric-value streams" id="bpActiveStreams">0</div>
+                    </div>
+                </div>
+
+                <div class="bp-assumptions" id="bpAssumptions">
+                    <!-- Rendered by JS -->
+                </div>
+
+                <div style="text-align: center;">
+                    <div class="bp-curve-badge">
+                        Growth Model: <span id="bpGrowthCurve">Linear</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue by Stream -->
+            <div class="bp-section">
+                <h3 class="bp-section-title">Revenue by Stream</h3>
+                <table class="bp-table">
+                    <thead>
+                        <tr>
+                            <th>Revenue Stream</th>
+                            <th>Phase</th>
+                            <th>Starts</th>
+                            <th>Year 1</th>
+                            <th>Year 2</th>
+                            <th>Year 3</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bpStreamTableBody">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Growth & Revenue Chart -->
+            <div class="bp-section">
+                <h3 class="bp-section-title">Growth & Revenue Trajectory</h3>
+                <div class="chart-legend" style="margin-bottom: 16px;">
+                    <div class="legend-item">
+                        <div class="legend-dot artists"></div>
+                        <span>Artists</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot listeners"></div>
+                        <span>Listeners</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot revenue"></div>
+                        <span>Monthly Revenue</span>
+                    </div>
+                </div>
+                <div class="chart-area">
+                    <canvas id="bpGrowthChart"></canvas>
+                </div>
+            </div>
+
+        </div><!-- End Business Plan View -->
+
     </div>
 
     <!-- Modal -->
@@ -1030,6 +1678,30 @@
                         <option value="both">Both</option>
                     </select>
                 </div>
+                <div class="input-group">
+                    <label>Starts</label>
+                    <div class="start-time-group">
+                        <select id="newStreamStartYear">
+                            <option value="1">Year 1</option>
+                            <option value="2">Year 2</option>
+                            <option value="3">Year 3</option>
+                        </select>
+                        <select id="newStreamStartMonth">
+                            <option value="1">M1</option>
+                            <option value="2">M2</option>
+                            <option value="3">M3</option>
+                            <option value="4">M4</option>
+                            <option value="5">M5</option>
+                            <option value="6">M6</option>
+                            <option value="7">M7</option>
+                            <option value="8">M8</option>
+                            <option value="9">M9</option>
+                            <option value="10">M10</option>
+                            <option value="11">M11</option>
+                            <option value="12">M12</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="modal-actions">
                 <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
@@ -1039,11 +1711,172 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         // State
         let selectedYear = 1;
         let growthCurve = 'linear';
         let chart = null;
+        const STORAGE_KEY = 'sonicgrid_calculator_state';
+
+        // Save state to LocalStorage
+        function saveState() {
+            const state = {
+                selectedYear,
+                growthCurve,
+                revenueStreams,
+                nextId,
+                growthInputs: {
+                    y1StartArtists: document.getElementById('y1StartArtists').value,
+                    y1EndArtists: document.getElementById('y1EndArtists').value,
+                    y1StartListeners: document.getElementById('y1StartListeners').value,
+                    y1EndListeners: document.getElementById('y1EndListeners').value,
+                    y2EndArtists: document.getElementById('y2EndArtists').value,
+                    y2EndListeners: document.getElementById('y2EndListeners').value,
+                    y3EndArtists: document.getElementById('y3EndArtists').value,
+                    y3EndListeners: document.getElementById('y3EndListeners').value
+                },
+                savedAt: new Date().toISOString()
+            };
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+                showSaveIndicator();
+            } catch (e) {
+                console.error('Failed to save state:', e);
+            }
+        }
+
+        // Load state from LocalStorage
+        function loadState() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (!saved) return false;
+
+                const state = JSON.parse(saved);
+
+                // Restore growth inputs
+                if (state.growthInputs) {
+                    document.getElementById('y1StartArtists').value = state.growthInputs.y1StartArtists;
+                    document.getElementById('y1EndArtists').value = state.growthInputs.y1EndArtists;
+                    document.getElementById('y1StartListeners').value = state.growthInputs.y1StartListeners;
+                    document.getElementById('y1EndListeners').value = state.growthInputs.y1EndListeners;
+                    document.getElementById('y2EndArtists').value = state.growthInputs.y2EndArtists;
+                    document.getElementById('y2EndListeners').value = state.growthInputs.y2EndListeners;
+                    document.getElementById('y3EndArtists').value = state.growthInputs.y3EndArtists;
+                    document.getElementById('y3EndListeners').value = state.growthInputs.y3EndListeners;
+                }
+
+                // Restore other state
+                if (state.selectedYear) selectedYear = state.selectedYear;
+                if (state.growthCurve) growthCurve = state.growthCurve;
+                if (state.revenueStreams) revenueStreams = state.revenueStreams;
+                if (state.nextId) nextId = state.nextId;
+
+                // Update UI to reflect loaded state
+                document.querySelectorAll('.curve-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.curve === growthCurve);
+                });
+                document.querySelectorAll('.year-tab').forEach(tab => {
+                    tab.classList.toggle('active', parseInt(tab.dataset.year) === selectedYear);
+                });
+
+                return true;
+            } catch (e) {
+                console.error('Failed to load state:', e);
+                return false;
+            }
+        }
+
+        // Show save indicator
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            if (indicator) {
+                indicator.classList.add('visible');
+                setTimeout(() => indicator.classList.remove('visible'), 1500);
+            }
+        }
+
+        // Clear saved state
+        function clearSavedState() {
+            if (confirm('Are you sure you want to reset to default settings? This cannot be undone.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        }
+
+        // Export to PDF
+        async function exportToPDF() {
+            const exportBtn = document.getElementById('exportBtn');
+            const exportBar = document.querySelector('.bp-export-bar');
+
+            // Hide export bar during capture
+            exportBar.style.display = 'none';
+            exportBtn.classList.add('loading');
+
+            try {
+                const { jsPDF } = window.jspdf;
+
+                // Always export the Business Plan view
+                const businessPlanView = document.getElementById('businessPlanView');
+                const wasHidden = !businessPlanView.classList.contains('active');
+
+                // Temporarily show and render business plan view if not visible
+                if (wasHidden) {
+                    businessPlanView.style.display = 'block';
+                    renderBusinessPlanView();
+                }
+
+                // Capture the business plan content
+                const canvas = await html2canvas(businessPlanView, {
+                    backgroundColor: '#0a0a0f',
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    width: 1200,
+                    windowWidth: 1200
+                });
+
+                // Hide again if it was hidden
+                if (wasHidden) {
+                    businessPlanView.style.display = '';
+                }
+
+                // Calculate PDF dimensions (A4 portrait for business plan)
+                const imgWidth = 210; // A4 portrait width in mm
+                const pageHeight = 297; // A4 portrait height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                const pdf = new jsPDF('p', 'mm', 'a4');
+
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                // Add first page
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                // Add additional pages if needed
+                while (heightLeft > 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                // Generate filename with date
+                const date = new Date().toISOString().split('T')[0];
+                pdf.save(`sonic-grid-business-plan-${date}.pdf`);
+
+            } catch (error) {
+                console.error('Export failed:', error);
+                alert('Export failed. Please try again.');
+            } finally {
+                // Restore export bar
+                exportBar.style.display = '';
+                exportBtn.classList.remove('loading');
+            }
+        }
 
         // Revenue streams
         let revenueStreams = [
@@ -1056,7 +1889,9 @@
                 price: 9.99,
                 adoption: 5,
                 target: "listeners",
-                platformTake: 100
+                platformTake: 100,
+                startYear: 1,
+                startMonth: 1
             },
             {
                 id: 2,
@@ -1067,7 +1902,9 @@
                 price: 25,
                 adoption: 15,
                 target: "artists",
-                platformTake: 100
+                platformTake: 100,
+                startYear: 1,
+                startMonth: 1
             },
             {
                 id: 3,
@@ -1079,19 +1916,9 @@
                 adoption: 3,
                 target: "listeners",
                 platformTake: 15,
-                frequency: 12
-            },
-            {
-                id: 4,
-                name: "Token-Based Access",
-                phase: "Phase 2",
-                type: "hybrid",
-                active: false,
-                price: 5,
-                adoption: 8,
-                target: "listeners",
-                platformTake: 100,
-                frequency: 6
+                frequency: 12,
+                startYear: 1,
+                startMonth: 1
             },
             {
                 id: 5,
@@ -1102,7 +1929,9 @@
                 price: 7.99,
                 adoption: 2,
                 target: "listeners",
-                platformTake: 100
+                platformTake: 100,
+                startYear: 2,
+                startMonth: 1
             },
             {
                 id: 6,
@@ -1114,7 +1943,9 @@
                 adoption: 80,
                 target: "listeners",
                 platformTake: 100,
-                frequency: 52
+                frequency: 52,
+                startYear: 3,
+                startMonth: 1
             },
             {
                 id: 7,
@@ -1126,7 +1957,9 @@
                 adoption: 2,
                 target: "listeners",
                 platformTake: 12,
-                frequency: 2
+                frequency: 2,
+                startYear: 2,
+                startMonth: 1
             },
             {
                 id: 8,
@@ -1138,7 +1971,9 @@
                 adoption: 10,
                 target: "artists",
                 platformTake: 100,
-                frequency: 1
+                frequency: 1,
+                startYear: 2,
+                startMonth: 1
             },
             {
                 id: 9,
@@ -1150,7 +1985,9 @@
                 adoption: 5,
                 target: "listeners",
                 platformTake: 30,
-                frequency: 4
+                frequency: 4,
+                startYear: 2,
+                startMonth: 1
             },
             {
                 id: 10,
@@ -1162,7 +1999,9 @@
                 adoption: 5,
                 target: "artists",
                 platformTake: 30,
-                frequency: 12
+                frequency: 12,
+                startYear: 2,
+                startMonth: 1
             },
             {
                 id: 11,
@@ -1174,7 +2013,9 @@
                 adoption: 20,
                 target: "artists",
                 platformTake: 100,
-                frequency: 2
+                frequency: 2,
+                startYear: 2,
+                startMonth: 1
             },
             {
                 id: 12,
@@ -1185,7 +2026,9 @@
                 price: 199,
                 adoption: 2,
                 target: "artists",
-                platformTake: 100
+                platformTake: 100,
+                startYear: 3,
+                startMonth: 1
             },
             {
                 id: 13,
@@ -1197,7 +2040,9 @@
                 adoption: 5,
                 target: "artists",
                 platformTake: 10,
-                frequency: 4
+                frequency: 4,
+                startYear: 3,
+                startMonth: 1
             },
             {
                 id: 14,
@@ -1209,7 +2054,9 @@
                 adoption: 1,
                 target: "listeners",
                 platformTake: 8,
-                frequency: 2
+                frequency: 2,
+                startYear: 3,
+                startMonth: 1
             },
             {
                 id: 15,
@@ -1221,9 +2068,16 @@
                 adoption: 8,
                 target: "artists",
                 platformTake: 10,
-                frequency: 2
+                frequency: 2,
+                startYear: 2,
+                startMonth: 1
             }
         ];
+
+        // Helper to get absolute month from year/month
+        function getAbsoluteMonth(year, month) {
+            return (year - 1) * 12 + month;
+        }
 
         let nextId = 16;
 
@@ -1287,14 +2141,18 @@
                 let monthlyRev = 0;
                 revenueStreams.forEach(stream => {
                     if (!stream.active) return;
-                    
-                    let baseUsers = stream.target === 'artists' ? artists : 
-                                    stream.target === 'listeners' ? listeners : 
+
+                    // Check if stream has started yet
+                    const streamStartMonth = getAbsoluteMonth(stream.startYear || 1, stream.startMonth || 1);
+                    if (m < streamStartMonth) return;
+
+                    let baseUsers = stream.target === 'artists' ? artists :
+                                    stream.target === 'listeners' ? listeners :
                                     artists + listeners;
-                    
+
                     const adoptingUsers = baseUsers * (stream.adoption / 100);
                     const platformRevenue = stream.price * (stream.platformTake / 100);
-                    
+
                     if (stream.type === 'recurring') {
                         monthlyRev += adoptingUsers * platformRevenue;
                     } else {
@@ -1465,14 +2323,19 @@
 
                 if (!stream.active) return;
 
+                const streamStartMonth = getAbsoluteMonth(stream.startYear || 1, stream.startMonth || 1);
+
                 monthlyData.forEach(d => {
-                    let baseUsers = stream.target === 'artists' ? d.artists : 
-                                    stream.target === 'listeners' ? d.listeners : 
+                    // Skip months before stream starts
+                    if (d.month < streamStartMonth) return;
+
+                    let baseUsers = stream.target === 'artists' ? d.artists :
+                                    stream.target === 'listeners' ? d.listeners :
                                     d.artists + d.listeners;
-                    
+
                     const adoptingUsers = baseUsers * (stream.adoption / 100);
                     const platformRevenue = stream.price * (stream.platformTake / 100);
-                    
+
                     let monthlyRev;
                     if (stream.type === 'recurring') {
                         monthlyRev = adoptingUsers * platformRevenue;
@@ -1488,17 +2351,30 @@
             });
 
             revenueStreams.forEach(stream => {
-                const phaseClass = stream.phase === 'MVP' ? 'mvp' : 
+                const phaseClass = stream.phase === 'MVP' ? 'mvp' :
                                    stream.phase === 'Phase 2' ? 'phase2' : 'phase3';
-                
+
+                const startYear = stream.startYear || 1;
+                const startMonth = stream.startMonth || 1;
+
+                // Generate year options
+                const yearOptions = [1, 2, 3].map(y =>
+                    `<option value="${y}" ${startYear === y ? 'selected' : ''}>Y${y}</option>`
+                ).join('');
+
+                // Generate month options
+                const monthOptions = Array.from({length: 12}, (_, i) => i + 1).map(m =>
+                    `<option value="${m}" ${startMonth === m ? 'selected' : ''}>M${m}</option>`
+                ).join('');
+
                 const html = `
                     <div class="stream-card ${stream.active ? 'active' : ''}" data-id="${stream.id}">
                         <div class="stream-header">
                             <div class="stream-info">
-                                <div class="stream-toggle ${stream.active ? 'active' : ''}" 
+                                <div class="stream-toggle ${stream.active ? 'active' : ''}"
                                      onclick="toggleStream(${stream.id})"></div>
                                 <div>
-                                    <div class="stream-name">${stream.name}</div>
+                                    <div class="stream-name">${stream.name}<span class="stream-start-badge">Starts Y${startYear} M${startMonth}</span></div>
                                     <span class="stream-phase ${phaseClass}">${stream.phase}</span>
                                 </div>
                             </div>
@@ -1540,6 +2416,17 @@
                                        onchange="updateStream(${stream.id}, 'frequency', this.value)">
                             </div>
                             ` : ''}
+                            <div class="input-group">
+                                <label>Starts</label>
+                                <div class="start-time-group">
+                                    <select onchange="updateStream(${stream.id}, 'startYear', this.value)">
+                                        ${yearOptions}
+                                    </select>
+                                    <select onchange="updateStream(${stream.id}, 'startMonth', this.value)">
+                                        ${monthOptions}
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -1556,6 +2443,7 @@
                 stream.active = !stream.active;
                 renderStreams();
                 renderChart();
+                saveState();
             }
         }
 
@@ -1565,6 +2453,7 @@
                 stream[field] = parseFloat(value) || 0;
                 renderStreams();
                 renderChart();
+                saveState();
             }
         }
 
@@ -1677,6 +2566,305 @@
             document.getElementById('monthlyTableBody').innerHTML = html;
         }
 
+        // View switching
+        let currentView = 'calculator';
+
+        function switchView(viewName) {
+            currentView = viewName;
+
+            // Update tab buttons
+            document.querySelectorAll('.view-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.view === viewName);
+            });
+
+            // Update view containers
+            document.querySelectorAll('.view-container').forEach(container => {
+                container.classList.remove('active');
+            });
+
+            if (viewName === 'calculator') {
+                document.getElementById('calculatorView').classList.add('active');
+            } else {
+                document.getElementById('businessPlanView').classList.add('active');
+                renderBusinessPlanView();
+            }
+        }
+
+        function renderBusinessPlanView() {
+            const y1Total = calculateYearlyRevenue(1);
+            const y2Total = calculateYearlyRevenue(2);
+            const y3Total = calculateYearlyRevenue(3);
+            const grandTotal = y1Total + y2Total + y3Total;
+            const activeStreams = revenueStreams.filter(s => s.active).length;
+
+            // Update summary metrics
+            document.getElementById('bpTotalRevenue').textContent = formatCurrency(grandTotal);
+            document.getElementById('bpY1Revenue').textContent = formatCurrency(y1Total);
+            document.getElementById('bpY2Revenue').textContent = formatCurrency(y2Total);
+            document.getElementById('bpY3Revenue').textContent = formatCurrency(y3Total);
+            document.getElementById('bpActiveStreams').textContent = activeStreams;
+            document.getElementById('bpGrowthCurve').textContent = growthCurve.charAt(0).toUpperCase() + growthCurve.slice(1);
+
+            // Render growth assumptions
+            const y1StartA = document.getElementById('y1StartArtists').value;
+            const y1EndA = document.getElementById('y1EndArtists').value;
+            const y1StartL = document.getElementById('y1StartListeners').value;
+            const y1EndL = document.getElementById('y1EndListeners').value;
+            const y2EndA = document.getElementById('y2EndArtists').value;
+            const y2EndL = document.getElementById('y2EndListeners').value;
+            const y3EndA = document.getElementById('y3EndArtists').value;
+            const y3EndL = document.getElementById('y3EndListeners').value;
+
+            document.getElementById('bpAssumptions').innerHTML = `
+                <div class="bp-assumption-card y1">
+                    <div class="bp-assumption-title">Year 1</div>
+                    <div class="bp-assumption-row">
+                        <span>Artists</span>
+                        <span>${formatNumber(parseInt(y1StartA))} → ${formatNumber(parseInt(y1EndA))}</span>
+                    </div>
+                    <div class="bp-assumption-row">
+                        <span>Listeners</span>
+                        <span>${formatNumber(parseInt(y1StartL))} → ${formatNumber(parseInt(y1EndL))}</span>
+                    </div>
+                </div>
+                <div class="bp-assumption-card y2">
+                    <div class="bp-assumption-title">Year 2</div>
+                    <div class="bp-assumption-row">
+                        <span>Artists</span>
+                        <span>${formatNumber(parseInt(y1EndA))} → ${formatNumber(parseInt(y2EndA))}</span>
+                    </div>
+                    <div class="bp-assumption-row">
+                        <span>Listeners</span>
+                        <span>${formatNumber(parseInt(y1EndL))} → ${formatNumber(parseInt(y2EndL))}</span>
+                    </div>
+                </div>
+                <div class="bp-assumption-card y3">
+                    <div class="bp-assumption-title">Year 3</div>
+                    <div class="bp-assumption-row">
+                        <span>Artists</span>
+                        <span>${formatNumber(parseInt(y2EndA))} → ${formatNumber(parseInt(y3EndA))}</span>
+                    </div>
+                    <div class="bp-assumption-row">
+                        <span>Listeners</span>
+                        <span>${formatNumber(parseInt(y2EndL))} → ${formatNumber(parseInt(y3EndL))}</span>
+                    </div>
+                </div>
+            `;
+
+            // Render revenue by stream table
+            renderBPStreamTable();
+
+            // Render growth chart
+            renderBPChart();
+        }
+
+        function renderBPStreamTable() {
+            const monthlyData = getMonthlyData();
+            const streamData = [];
+
+            revenueStreams.forEach(stream => {
+                if (!stream.active) return;
+
+                let y1Rev = 0, y2Rev = 0, y3Rev = 0;
+                const streamStartMonth = getAbsoluteMonth(stream.startYear || 1, stream.startMonth || 1);
+
+                monthlyData.forEach(d => {
+                    // Skip months before stream starts
+                    if (d.month < streamStartMonth) return;
+
+                    let baseUsers = stream.target === 'artists' ? d.artists :
+                                    stream.target === 'listeners' ? d.listeners :
+                                    d.artists + d.listeners;
+
+                    const adoptingUsers = baseUsers * (stream.adoption / 100);
+                    const platformRevenue = stream.price * (stream.platformTake / 100);
+
+                    let monthlyRev;
+                    if (stream.type === 'recurring') {
+                        monthlyRev = adoptingUsers * platformRevenue;
+                    } else {
+                        const monthlyFreq = (stream.frequency || 12) / 12;
+                        monthlyRev = adoptingUsers * platformRevenue * monthlyFreq;
+                    }
+
+                    if (d.year === 1) y1Rev += monthlyRev;
+                    else if (d.year === 2) y2Rev += monthlyRev;
+                    else y3Rev += monthlyRev;
+                });
+
+                streamData.push({
+                    name: stream.name,
+                    phase: stream.phase,
+                    startYear: stream.startYear || 1,
+                    startMonth: stream.startMonth || 1,
+                    y1: y1Rev,
+                    y2: y2Rev,
+                    y3: y3Rev,
+                    total: y1Rev + y2Rev + y3Rev
+                });
+            });
+
+            // Sort by phase first, then by start time within phase
+            const phaseOrder = { 'MVP': 1, 'Phase 2': 2, 'Phase 3': 3 };
+            streamData.sort((a, b) => {
+                // First sort by phase
+                if (phaseOrder[a.phase] !== phaseOrder[b.phase]) {
+                    return phaseOrder[a.phase] - phaseOrder[b.phase];
+                }
+                // Within same phase, sort by start time
+                const aStart = getAbsoluteMonth(a.startYear, a.startMonth);
+                const bStart = getAbsoluteMonth(b.startYear, b.startMonth);
+                if (aStart !== bStart) return aStart - bStart;
+                // Within same start, sort by revenue
+                return b.total - a.total;
+            });
+
+            let html = '';
+            let totalY1 = 0, totalY2 = 0, totalY3 = 0, totalAll = 0;
+
+            streamData.forEach(s => {
+                const phaseClass = s.phase === 'MVP' ? 'mvp' :
+                                   s.phase === 'Phase 2' ? 'phase2' : 'phase3';
+                html += `
+                    <tr>
+                        <td>${s.name}</td>
+                        <td><span class="phase-badge ${phaseClass}">${s.phase}</span></td>
+                        <td>Y${s.startYear} M${s.startMonth}</td>
+                        <td class="y1-value">${formatCurrency(s.y1)}</td>
+                        <td class="y2-value">${formatCurrency(s.y2)}</td>
+                        <td class="y3-value">${formatCurrency(s.y3)}</td>
+                        <td>${formatCurrency(s.total)}</td>
+                    </tr>
+                `;
+                totalY1 += s.y1;
+                totalY2 += s.y2;
+                totalY3 += s.y3;
+                totalAll += s.total;
+            });
+
+            html += `
+                <tr class="total-row">
+                    <td colspan="3"><strong>Total</strong></td>
+                    <td class="y1-value">${formatCurrency(totalY1)}</td>
+                    <td class="y2-value">${formatCurrency(totalY2)}</td>
+                    <td class="y3-value">${formatCurrency(totalY3)}</td>
+                    <td>${formatCurrency(totalAll)}</td>
+                </tr>
+            `;
+
+            document.getElementById('bpStreamTableBody').innerHTML = html;
+        }
+
+        let bpChart = null;
+
+        function renderBPChart() {
+            const ctx = document.getElementById('bpGrowthChart').getContext('2d');
+            const monthlyData = getMonthlyData();
+
+            const labels = monthlyData.map(d => d.label);
+            const artistsData = monthlyData.map(d => d.artists);
+            const listenersData = monthlyData.map(d => d.listeners);
+            const revenueData = monthlyData.map(d => d.monthlyRevenue);
+
+            if (bpChart) {
+                bpChart.destroy();
+            }
+
+            bpChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [
+                        {
+                            label: 'Artists',
+                            data: artistsData,
+                            borderColor: '#00f5d4',
+                            backgroundColor: 'rgba(0, 245, 212, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Listeners',
+                            data: listenersData,
+                            borderColor: '#f72585',
+                            backgroundColor: 'rgba(247, 37, 133, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Monthly Revenue',
+                            data: revenueData,
+                            borderColor: '#fee440',
+                            backgroundColor: 'rgba(254, 228, 64, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: '#12121a',
+                            borderColor: '#2a2a3a',
+                            borderWidth: 1,
+                            titleFont: { family: 'Space Mono' },
+                            bodyFont: { family: 'Space Mono' },
+                            callbacks: {
+                                label: function(context) {
+                                    if (context.dataset.label === 'Monthly Revenue') {
+                                        return context.dataset.label + ': ' + formatCurrency(context.raw);
+                                    }
+                                    return context.dataset.label + ': ' + formatNumber(context.raw);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(42, 42, 58, 0.5)' },
+                            ticks: {
+                                color: '#8b8b9e',
+                                font: { family: 'Space Mono', size: 10 },
+                                maxRotation: 45
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            grid: { color: 'rgba(42, 42, 58, 0.5)' },
+                            ticks: {
+                                color: '#8b8b9e',
+                                font: { family: 'Space Mono', size: 10 },
+                                callback: (v) => formatNumber(v)
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            ticks: {
+                                color: '#fee440',
+                                font: { family: 'Space Mono', size: 10 },
+                                callback: (v) => formatCurrency(v)
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
         function syncYearStarts() {
             // Y2 start = Y1 end
             document.getElementById('y2StartArtists').value = 
@@ -1706,6 +2894,8 @@
             const price = parseFloat(document.getElementById('newStreamPrice').value) || 0;
             const adoption = parseFloat(document.getElementById('newStreamAdoption').value) || 0;
             const target = document.getElementById('newStreamTarget').value;
+            const startYear = parseInt(document.getElementById('newStreamStartYear').value) || 1;
+            const startMonth = parseInt(document.getElementById('newStreamStartMonth').value) || 1;
 
             if (!name) {
                 alert('Please enter a stream name');
@@ -1722,21 +2912,32 @@
                 adoption,
                 target,
                 platformTake: 100,
-                frequency: type === 'recurring' ? undefined : 12
+                frequency: type === 'recurring' ? undefined : 12,
+                startYear,
+                startMonth
             };
 
             revenueStreams.push(newStream);
             closeModal();
             renderStreams();
             renderChart();
+            saveState();
 
             // Clear form
             document.getElementById('newStreamName').value = '';
             document.getElementById('newStreamPrice').value = '';
             document.getElementById('newStreamAdoption').value = '';
+            document.getElementById('newStreamStartYear').value = '1';
+            document.getElementById('newStreamStartMonth').value = '1';
         }
 
         // Event Listeners
+        document.querySelectorAll('.view-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                switchView(tab.dataset.view);
+            });
+        });
+
         document.querySelectorAll('.curve-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.curve-btn').forEach(b => b.classList.remove('active'));
@@ -1744,6 +2945,7 @@
                 growthCurve = btn.dataset.curve;
                 renderStreams();
                 renderChart();
+                saveState();
             });
         });
 
@@ -1753,6 +2955,7 @@
                 tab.classList.add('active');
                 selectedYear = parseInt(tab.dataset.year);
                 updateSummary();
+                saveState();
             });
         });
 
@@ -1762,6 +2965,7 @@
                 syncYearStarts();
                 renderStreams();
                 renderChart();
+                saveState();
             });
         });
 
@@ -1773,6 +2977,7 @@
         });
 
         // Initialize
+        loadState(); // Load saved state first
         syncYearStarts();
         renderStreams();
         renderChart();

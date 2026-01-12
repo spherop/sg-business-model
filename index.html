@@ -1487,10 +1487,29 @@
             color: var(--accent-purple);
         }
 
-        .cost-category-total {
+        .cost-category-totals {
+            display: flex;
+            gap: 20px;
+        }
+
+        .cost-cat-year {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .cost-cat-label {
             font-family: 'Space Mono', monospace;
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .cost-cat-amount {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
             color: var(--text-primary);
         }
 
@@ -2515,7 +2534,11 @@
                         <span class="cost-category-badge infrastructure">Infrastructure</span>
                         <span class="cost-category-name">Cloud & Platform Costs</span>
                     </div>
-                    <div class="cost-category-total" id="infraTotal">$0</div>
+                    <div class="cost-category-totals">
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y1</span><span class="cost-cat-amount" id="infraTotalY1">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y2</span><span class="cost-cat-amount" id="infraTotalY2">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y3</span><span class="cost-cat-amount" id="infraTotalY3">$0</span></div>
+                    </div>
                 </div>
                 <div class="cost-items-grid" id="infraCostItems">
                     <!-- Cost items rendered by JS -->
@@ -2529,7 +2552,11 @@
                         <span class="cost-category-badge payroll">Payroll</span>
                         <span class="cost-category-name">Team & Personnel</span>
                     </div>
-                    <div class="cost-category-total" id="payrollTotal">$0</div>
+                    <div class="cost-category-totals">
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y1</span><span class="cost-cat-amount" id="payrollTotalY1">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y2</span><span class="cost-cat-amount" id="payrollTotalY2">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y3</span><span class="cost-cat-amount" id="payrollTotalY3">$0</span></div>
+                    </div>
                 </div>
                 <div class="cost-items-grid" id="payrollCostItems">
                     <!-- Cost items rendered by JS -->
@@ -2543,7 +2570,11 @@
                         <span class="cost-category-badge opex">OpEx</span>
                         <span class="cost-category-name">Operational Expenses</span>
                     </div>
-                    <div class="cost-category-total" id="opexTotal">$0</div>
+                    <div class="cost-category-totals">
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y1</span><span class="cost-cat-amount" id="opexTotalY1">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y2</span><span class="cost-cat-amount" id="opexTotalY2">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y3</span><span class="cost-cat-amount" id="opexTotalY3">$0</span></div>
+                    </div>
                 </div>
                 <div class="cost-items-grid" id="opexCostItems">
                     <!-- Cost items rendered by JS -->
@@ -2557,7 +2588,11 @@
                         <span class="cost-category-badge marketing">Marketing</span>
                         <span class="cost-category-name">Customer Acquisition</span>
                     </div>
-                    <div class="cost-category-total" id="marketingTotal">$0</div>
+                    <div class="cost-category-totals">
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y1</span><span class="cost-cat-amount" id="marketingTotalY1">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y2</span><span class="cost-cat-amount" id="marketingTotalY2">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y3</span><span class="cost-cat-amount" id="marketingTotalY3">$0</span></div>
+                    </div>
                 </div>
                 <div class="cost-items-grid" id="marketingCostItems">
                     <!-- Cost items rendered by JS -->
@@ -3776,7 +3811,7 @@
                 'opex': 'opexCostItems',
                 'marketing': 'marketingCostItems'
             };
-            const categoryTotals = {
+            const categoryTotalIds = {
                 'infrastructure': 'infraTotal',
                 'payroll': 'payrollTotal',
                 'opex': 'opexTotal',
@@ -3824,9 +3859,11 @@
                     </div>
                 `).join('');
 
-                // Update category total
-                const total = getCategoryTotal(category, 1) + getCategoryTotal(category, 2) + getCategoryTotal(category, 3);
-                document.getElementById(categoryTotals[category]).textContent = formatCurrency(total);
+                // Update category totals for Y1/Y2/Y3
+                const baseId = categoryTotalIds[category];
+                document.getElementById(baseId + 'Y1').textContent = formatCurrency(getCategoryTotal(category, 1));
+                document.getElementById(baseId + 'Y2').textContent = formatCurrency(getCategoryTotal(category, 2));
+                document.getElementById(baseId + 'Y3').textContent = formatCurrency(getCategoryTotal(category, 3));
             });
 
             // Update summary totals

@@ -2306,19 +2306,19 @@
                     <div class="year-inputs">
                         <div class="input-group">
                             <label>Starting Artists</label>
-                            <input type="number" id="y1StartArtists" value="0">
+                            <input type="text" id="y1StartArtists" value="0" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Ending Artists</label>
-                            <input type="number" id="y1EndArtists" value="20000">
+                            <input type="text" id="y1EndArtists" value="20,000" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Starting Listeners</label>
-                            <input type="number" id="y1StartListeners" value="0">
+                            <input type="text" id="y1StartListeners" value="0" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Ending Listeners</label>
-                            <input type="number" id="y1EndListeners" value="200000">
+                            <input type="text" id="y1EndListeners" value="200,000" class="comma-input">
                         </div>
                     </div>
                 </div>
@@ -2327,19 +2327,19 @@
                     <div class="year-inputs">
                         <div class="input-group">
                             <label>Starting Artists</label>
-                            <input type="number" id="y2StartArtists" value="20000" readonly style="opacity: 0.6;">
+                            <input type="text" id="y2StartArtists" value="20,000" readonly style="opacity: 0.6;" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Ending Artists</label>
-                            <input type="number" id="y2EndArtists" value="100000">
+                            <input type="text" id="y2EndArtists" value="100,000" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Starting Listeners</label>
-                            <input type="number" id="y2StartListeners" value="200000" readonly style="opacity: 0.6;">
+                            <input type="text" id="y2StartListeners" value="200,000" readonly style="opacity: 0.6;" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Ending Listeners</label>
-                            <input type="number" id="y2EndListeners" value="1500000">
+                            <input type="text" id="y2EndListeners" value="1,500,000" class="comma-input">
                         </div>
                     </div>
                 </div>
@@ -2348,19 +2348,19 @@
                     <div class="year-inputs">
                         <div class="input-group">
                             <label>Starting Artists</label>
-                            <input type="number" id="y3StartArtists" value="100000" readonly style="opacity: 0.6;">
+                            <input type="text" id="y3StartArtists" value="100,000" readonly style="opacity: 0.6;" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Ending Artists</label>
-                            <input type="number" id="y3EndArtists" value="300000">
+                            <input type="text" id="y3EndArtists" value="300,000" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Starting Listeners</label>
-                            <input type="number" id="y3StartListeners" value="1500000" readonly style="opacity: 0.6;">
+                            <input type="text" id="y3StartListeners" value="1,500,000" readonly style="opacity: 0.6;" class="comma-input">
                         </div>
                         <div class="input-group">
                             <label>Ending Listeners</label>
-                            <input type="number" id="y3EndListeners" value="6000000">
+                            <input type="text" id="y3EndListeners" value="6,000,000" class="comma-input">
                         </div>
                     </div>
                 </div>
@@ -2620,7 +2620,7 @@
                         <label>Raising Amount</label>
                         <div class="currency-input">
                             <span class="currency-symbol">$</span>
-                            <input type="text" id="raisingAmount" value="3,000,000" onchange="updateInvestment()">
+                            <input type="text" id="raisingAmount" value="3,000,000" class="comma-input" onchange="updateInvestment()">
                         </div>
                     </div>
                     <div class="investment-card">
@@ -2635,7 +2635,7 @@
                         <label>Pre-Money Valuation</label>
                         <div class="currency-input">
                             <span class="currency-symbol">$</span>
-                            <input type="text" id="preMoneyValuation" value="12,000,000" onchange="updateInvestment()">
+                            <input type="text" id="preMoneyValuation" value="12,000,000" class="comma-input" onchange="updateInvestment()">
                         </div>
                     </div>
                     <div class="investment-card">
@@ -2742,16 +2742,16 @@
                         <label>Current MRR</label>
                         <div class="currency-input">
                             <span class="currency-symbol">$</span>
-                            <input type="text" id="currentMRR" value="0" onchange="updateInvestment()">
+                            <input type="text" id="currentMRR" value="0" class="comma-input" onchange="updateInvestment()">
                         </div>
                     </div>
                     <div class="investment-card">
                         <label>Current Users</label>
-                        <input type="text" id="currentUsers" value="0" onchange="updateInvestment()">
+                        <input type="text" id="currentUsers" value="0" class="comma-input" onchange="updateInvestment()">
                     </div>
                     <div class="investment-card">
                         <label>Waitlist Size</label>
-                        <input type="text" id="waitlistSize" value="0" onchange="updateInvestment()">
+                        <input type="text" id="waitlistSize" value="0" class="comma-input" onchange="updateInvestment()">
                     </div>
                     <div class="investment-card">
                         <label>Product Stage</label>
@@ -2792,15 +2792,15 @@
                     <div class="modal-field-row">
                         <div class="modal-field">
                             <label>Year 1 Cost</label>
-                            <input type="number" id="costY1" placeholder="0" min="0">
+                            <input type="text" id="costY1" placeholder="0" class="comma-input">
                         </div>
                         <div class="modal-field">
                             <label>Year 2 Cost</label>
-                            <input type="number" id="costY2" placeholder="0" min="0">
+                            <input type="text" id="costY2" placeholder="0" class="comma-input">
                         </div>
                         <div class="modal-field">
                             <label>Year 3 Cost</label>
-                            <input type="number" id="costY3" placeholder="0" min="0">
+                            <input type="text" id="costY3" placeholder="0" class="comma-input">
                         </div>
                     </div>
                     <div class="modal-field">
@@ -3536,20 +3536,20 @@
 
         function getMonthlyData() {
             const data = [];
-            
+
             // Year 1
-            const y1StartA = parseInt(document.getElementById('y1StartArtists').value) || 0;
-            const y1EndA = parseInt(document.getElementById('y1EndArtists').value) || 0;
-            const y1StartL = parseInt(document.getElementById('y1StartListeners').value) || 0;
-            const y1EndL = parseInt(document.getElementById('y1EndListeners').value) || 0;
-            
+            const y1StartA = parseNumberInput(document.getElementById('y1StartArtists').value);
+            const y1EndA = parseNumberInput(document.getElementById('y1EndArtists').value);
+            const y1StartL = parseNumberInput(document.getElementById('y1StartListeners').value);
+            const y1EndL = parseNumberInput(document.getElementById('y1EndListeners').value);
+
             // Year 2
-            const y2EndA = parseInt(document.getElementById('y2EndArtists').value) || 0;
-            const y2EndL = parseInt(document.getElementById('y2EndListeners').value) || 0;
-            
+            const y2EndA = parseNumberInput(document.getElementById('y2EndArtists').value);
+            const y2EndL = parseNumberInput(document.getElementById('y2EndListeners').value);
+
             // Year 3
-            const y3EndA = parseInt(document.getElementById('y3EndArtists').value) || 0;
-            const y3EndL = parseInt(document.getElementById('y3EndListeners').value) || 0;
+            const y3EndA = parseNumberInput(document.getElementById('y3EndArtists').value);
+            const y3EndL = parseNumberInput(document.getElementById('y3EndListeners').value);
 
             // Generate 36 months of data
             for (let m = 1; m <= 36; m++) {
@@ -3624,6 +3624,33 @@
                 return (num / 1000).toFixed(0) + 'K';
             }
             return num.toLocaleString();
+        }
+
+        // Format number with commas for input display
+        function formatNumberWithCommas(num) {
+            return Math.round(num).toLocaleString();
+        }
+
+        // Parse number from input (strip commas)
+        function parseNumberInput(value) {
+            return parseInt(value.replace(/,/g, '')) || 0;
+        }
+
+        // Setup comma formatting for a numeric input
+        function setupCommaInput(input) {
+            // Format on blur
+            input.addEventListener('blur', function() {
+                const val = parseNumberInput(this.value);
+                this.value = formatNumberWithCommas(val);
+            });
+            // Clear formatting on focus for easier editing
+            input.addEventListener('focus', function() {
+                const val = parseNumberInput(this.value);
+                this.value = val;
+            });
+            // Initial format
+            const val = parseNumberInput(input.value);
+            input.value = formatNumberWithCommas(val);
         }
 
         function calculateYearlyRevenue(yearNum) {
@@ -3835,24 +3862,24 @@
                         <div class="cost-amounts">
                             <div class="cost-year-input">
                                 <label>Y1</label>
-                                <input type="text" value="${formatCurrency(cost.y1)}"
+                                <input type="text" value="${formatNumberWithCommas(cost.y1)}"
                                     onchange="updateCostAmount(${cost.id}, 'y1', this.value)"
                                     onfocus="this.value = ${cost.y1}"
-                                    onblur="this.value = formatCurrency(${cost.y1})">
+                                    onblur="this.value = formatNumberWithCommas(${cost.y1})">
                             </div>
                             <div class="cost-year-input">
                                 <label>Y2</label>
-                                <input type="text" value="${formatCurrency(cost.y2)}"
+                                <input type="text" value="${formatNumberWithCommas(cost.y2)}"
                                     onchange="updateCostAmount(${cost.id}, 'y2', this.value)"
                                     onfocus="this.value = ${cost.y2}"
-                                    onblur="this.value = formatCurrency(${cost.y2})">
+                                    onblur="this.value = formatNumberWithCommas(${cost.y2})">
                             </div>
                             <div class="cost-year-input">
                                 <label>Y3</label>
-                                <input type="text" value="${formatCurrency(cost.y3)}"
+                                <input type="text" value="${formatNumberWithCommas(cost.y3)}"
                                     onchange="updateCostAmount(${cost.id}, 'y3', this.value)"
                                     onfocus="this.value = ${cost.y3}"
-                                    onblur="this.value = formatCurrency(${cost.y3})">
+                                    onblur="this.value = formatNumberWithCommas(${cost.y3})">
                             </div>
                         </div>
                         ${cost.notes ? `<div class="cost-notes">${cost.notes}</div>` : ''}
@@ -3885,8 +3912,8 @@
         function updateCostAmount(id, yearKey, value) {
             const cost = costItems.find(c => c.id === id);
             if (cost) {
-                // Parse currency input
-                const numValue = parseFloat(value.replace(/[^0-9.-]/g, '')) || 0;
+                // Parse currency input (handle commas, $, etc.)
+                const numValue = parseNumberInput(value.replace(/[$]/g, ''));
                 cost[yearKey] = numValue;
                 renderCostsView();
                 saveState();
@@ -3928,9 +3955,9 @@
                 name: name,
                 category: document.getElementById('costCategory').value,
                 active: true,
-                y1: parseFloat(document.getElementById('costY1').value) || 0,
-                y2: parseFloat(document.getElementById('costY2').value) || 0,
-                y3: parseFloat(document.getElementById('costY3').value) || 0,
+                y1: parseNumberInput(document.getElementById('costY1').value),
+                y2: parseNumberInput(document.getElementById('costY2').value),
+                y3: parseNumberInput(document.getElementById('costY3').value),
                 notes: document.getElementById('costNotes').value.trim()
             };
 
@@ -3975,12 +4002,10 @@
 
         function updateInvestment() {
             // Parse raising amount
-            const raisingInput = document.getElementById('raisingAmount').value;
-            investmentData.raisingAmount = parseFloat(raisingInput.replace(/[^0-9]/g, '')) || 0;
+            investmentData.raisingAmount = parseNumberInput(document.getElementById('raisingAmount').value);
 
             // Parse pre-money valuation
-            const valuationInput = document.getElementById('preMoneyValuation').value;
-            investmentData.preMoneyValuation = parseFloat(valuationInput.replace(/[^0-9]/g, '')) || 0;
+            investmentData.preMoneyValuation = parseNumberInput(document.getElementById('preMoneyValuation').value);
 
             // Calculate equity offered
             const postMoney = investmentData.preMoneyValuation + investmentData.raisingAmount;
@@ -3998,9 +4023,9 @@
             document.getElementById('monthlyBurnRate').textContent = formatCurrency(monthlyBurn);
 
             // Traction
-            investmentData.currentMRR = parseFloat(document.getElementById('currentMRR').value.replace(/[^0-9]/g, '')) || 0;
-            investmentData.currentUsers = parseInt(document.getElementById('currentUsers').value.replace(/[^0-9]/g, '')) || 0;
-            investmentData.waitlistSize = parseInt(document.getElementById('waitlistSize').value.replace(/[^0-9]/g, '')) || 0;
+            investmentData.currentMRR = parseNumberInput(document.getElementById('currentMRR').value);
+            investmentData.currentUsers = parseNumberInput(document.getElementById('currentUsers').value);
+            investmentData.waitlistSize = parseNumberInput(document.getElementById('waitlistSize').value);
             investmentData.productStage = document.getElementById('productStage').value;
 
             updateFundsAllocation();
@@ -4285,14 +4310,14 @@
             // Get end of year counts for selected year
             let endArtists, endListeners;
             if (selectedYear === 1) {
-                endArtists = parseInt(document.getElementById('y1EndArtists').value) || 0;
-                endListeners = parseInt(document.getElementById('y1EndListeners').value) || 0;
+                endArtists = parseNumberInput(document.getElementById('y1EndArtists').value);
+                endListeners = parseNumberInput(document.getElementById('y1EndListeners').value);
             } else if (selectedYear === 2) {
-                endArtists = parseInt(document.getElementById('y2EndArtists').value) || 0;
-                endListeners = parseInt(document.getElementById('y2EndListeners').value) || 0;
+                endArtists = parseNumberInput(document.getElementById('y2EndArtists').value);
+                endListeners = parseNumberInput(document.getElementById('y2EndListeners').value);
             } else {
-                endArtists = parseInt(document.getElementById('y3EndArtists').value) || 0;
-                endListeners = parseInt(document.getElementById('y3EndListeners').value) || 0;
+                endArtists = parseNumberInput(document.getElementById('y3EndArtists').value);
+                endListeners = parseNumberInput(document.getElementById('y3EndListeners').value);
             }
 
             document.getElementById('revenuePerArtist').textContent = endArtists > 0 ? 
@@ -4482,33 +4507,33 @@
                     <div class="bp-assumption-title">Year 1</div>
                     <div class="bp-assumption-row">
                         <span>Artists</span>
-                        <span>${formatNumber(parseInt(y1StartA))} → ${formatNumber(parseInt(y1EndA))}</span>
+                        <span>${formatNumber(parseNumberInput(y1StartA))} → ${formatNumber(parseNumberInput(y1EndA))}</span>
                     </div>
                     <div class="bp-assumption-row">
                         <span>Listeners</span>
-                        <span>${formatNumber(parseInt(y1StartL))} → ${formatNumber(parseInt(y1EndL))}</span>
+                        <span>${formatNumber(parseNumberInput(y1StartL))} → ${formatNumber(parseNumberInput(y1EndL))}</span>
                     </div>
                 </div>
                 <div class="bp-assumption-card y2">
                     <div class="bp-assumption-title">Year 2</div>
                     <div class="bp-assumption-row">
                         <span>Artists</span>
-                        <span>${formatNumber(parseInt(y1EndA))} → ${formatNumber(parseInt(y2EndA))}</span>
+                        <span>${formatNumber(parseNumberInput(y1EndA))} → ${formatNumber(parseNumberInput(y2EndA))}</span>
                     </div>
                     <div class="bp-assumption-row">
                         <span>Listeners</span>
-                        <span>${formatNumber(parseInt(y1EndL))} → ${formatNumber(parseInt(y2EndL))}</span>
+                        <span>${formatNumber(parseNumberInput(y1EndL))} → ${formatNumber(parseNumberInput(y2EndL))}</span>
                     </div>
                 </div>
                 <div class="bp-assumption-card y3">
                     <div class="bp-assumption-title">Year 3</div>
                     <div class="bp-assumption-row">
                         <span>Artists</span>
-                        <span>${formatNumber(parseInt(y2EndA))} → ${formatNumber(parseInt(y3EndA))}</span>
+                        <span>${formatNumber(parseNumberInput(y2EndA))} → ${formatNumber(parseNumberInput(y3EndA))}</span>
                     </div>
                     <div class="bp-assumption-row">
                         <span>Listeners</span>
-                        <span>${formatNumber(parseInt(y2EndL))} → ${formatNumber(parseInt(y3EndL))}</span>
+                        <span>${formatNumber(parseNumberInput(y2EndL))} → ${formatNumber(parseNumberInput(y3EndL))}</span>
                     </div>
                 </div>
             `;
@@ -4938,6 +4963,12 @@
         // Initialize
         loadState(); // Load saved state first
         syncYearStarts();
+
+        // Setup comma formatting for all numeric inputs
+        document.querySelectorAll('.comma-input').forEach(input => {
+            setupCommaInput(input);
+        });
+
         renderStreams();
         renderChart();
     </script>

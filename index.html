@@ -4469,13 +4469,18 @@
                 
                 let yearRev = 0;
                 monthlyData.filter(d => d.year === selectedYear).forEach(d => {
-                    let baseUsers = stream.target === 'artists' ? d.artists : 
-                                    stream.target === 'listeners' ? d.listeners : 
+                    let baseUsers = stream.target === 'artists' ? d.artists :
+                                    stream.target === 'listeners' ? d.listeners :
                                     d.artists + d.listeners;
-                    
-                    const adoptingUsers = baseUsers * (stream.adoption / 100);
+
+                    // Get adoption rate for the current year
+                    const adoption = d.year === 1 ? (stream.adoptionY1 ?? stream.adoption ?? 0) :
+                                     d.year === 2 ? (stream.adoptionY2 ?? stream.adoption ?? 0) :
+                                     (stream.adoptionY3 ?? stream.adoption ?? 0);
+
+                    const adoptingUsers = baseUsers * (adoption / 100);
                     const platformRevenue = stream.price * (stream.platformTake / 100);
-                    
+
                     if (stream.type === 'recurring') {
                         yearRev += adoptingUsers * platformRevenue;
                     } else {
@@ -4732,7 +4737,12 @@
                                     stream.target === 'listeners' ? d.listeners :
                                     d.artists + d.listeners;
 
-                    const adoptingUsers = baseUsers * (stream.adoption / 100);
+                    // Get adoption rate for the current year
+                    const adoption = d.year === 1 ? (stream.adoptionY1 ?? stream.adoption ?? 0) :
+                                     d.year === 2 ? (stream.adoptionY2 ?? stream.adoption ?? 0) :
+                                     (stream.adoptionY3 ?? stream.adoption ?? 0);
+
+                    const adoptingUsers = baseUsers * (adoption / 100);
                     const platformRevenue = stream.price * (stream.platformTake / 100);
 
                     let monthlyRev;

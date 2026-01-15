@@ -1487,11 +1487,6 @@
             color: var(--accent-purple);
         }
 
-        .cost-category-badge.benefits {
-            background: rgba(72, 187, 120, 0.15);
-            color: #48bb78;
-        }
-
         .cost-category-totals {
             display: flex;
             gap: 20px;
@@ -1924,6 +1919,14 @@
             color: var(--text-muted);
             font-family: 'Space Mono', monospace;
             font-size: 14px;
+        }
+
+        .fund-auto-percent {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            color: var(--text-secondary);
+            min-width: 50px;
+            text-align: right;
         }
 
         .fund-amount {
@@ -2568,24 +2571,6 @@
                 </div>
             </div>
 
-            <!-- Benefits Costs -->
-            <div class="cost-category" id="benefitsCosts">
-                <div class="cost-category-header">
-                    <div class="cost-category-title">
-                        <span class="cost-category-badge benefits">Benefits</span>
-                        <span class="cost-category-name">Employee Benefits & Perks</span>
-                    </div>
-                    <div class="cost-category-totals">
-                        <div class="cost-cat-year"><span class="cost-cat-label">Y1</span><span class="cost-cat-amount" id="benefitsTotalY1">$0</span></div>
-                        <div class="cost-cat-year"><span class="cost-cat-label">Y2</span><span class="cost-cat-amount" id="benefitsTotalY2">$0</span></div>
-                        <div class="cost-cat-year"><span class="cost-cat-label">Y3</span><span class="cost-cat-amount" id="benefitsTotalY3">$0</span></div>
-                    </div>
-                </div>
-                <div class="cost-items-grid" id="benefitsCostItems">
-                    <!-- Cost items rendered by JS -->
-                </div>
-            </div>
-
             <!-- OpEx Costs -->
             <div class="cost-category" id="opexCosts">
                 <div class="cost-category-header">
@@ -2670,32 +2655,34 @@
 
             <!-- Use of Funds -->
             <div class="investment-section">
-                <h3 class="investment-section-title">Use of Funds</h3>
+                <h3 class="investment-section-title">Use of Funds <span style="font-size: 12px; font-weight: 400; color: var(--text-muted);">(auto-calculated from costs for runway period)</span></h3>
                 <div class="use-of-funds">
                     <div class="fund-allocation">
                         <div class="fund-row">
-                            <span class="fund-label">Engineering & Product</span>
-                            <input type="number" id="fundEngineering" value="40" min="0" max="100" onchange="updateFundsAllocation()">
-                            <span class="fund-percent">%</span>
-                            <span class="fund-amount" id="fundEngineeringAmt">$1.2M</span>
+                            <span class="fund-label">Infrastructure</span>
+                            <span class="fund-auto-percent" id="fundInfraPercent">0%</span>
+                            <span class="fund-amount" id="fundInfraAmt">$0</span>
                         </div>
                         <div class="fund-row">
-                            <span class="fund-label">Marketing & Growth</span>
-                            <input type="number" id="fundMarketing" value="25" min="0" max="100" onchange="updateFundsAllocation()">
-                            <span class="fund-percent">%</span>
-                            <span class="fund-amount" id="fundMarketingAmt">$750K</span>
+                            <span class="fund-label">Payroll</span>
+                            <span class="fund-auto-percent" id="fundPayrollPercent">0%</span>
+                            <span class="fund-amount" id="fundPayrollAmt">$0</span>
                         </div>
                         <div class="fund-row">
-                            <span class="fund-label">Operations</span>
-                            <input type="number" id="fundOperations" value="20" min="0" max="100" onchange="updateFundsAllocation()">
-                            <span class="fund-percent">%</span>
-                            <span class="fund-amount" id="fundOperationsAmt">$600K</span>
+                            <span class="fund-label">Marketing</span>
+                            <span class="fund-auto-percent" id="fundMarketingPercent">0%</span>
+                            <span class="fund-amount" id="fundMarketingAmt">$0</span>
+                        </div>
+                        <div class="fund-row">
+                            <span class="fund-label">OpEx</span>
+                            <span class="fund-auto-percent" id="fundOpexPercent">0%</span>
+                            <span class="fund-amount" id="fundOpexAmt">$0</span>
                         </div>
                         <div class="fund-row">
                             <span class="fund-label">Reserve / Buffer</span>
-                            <input type="number" id="fundReserve" value="15" min="0" max="100" onchange="updateFundsAllocation()">
+                            <input type="number" id="fundReserve" value="10" min="0" max="100" onchange="updateFundsAllocation()">
                             <span class="fund-percent">%</span>
-                            <span class="fund-amount" id="fundReserveAmt">$450K</span>
+                            <span class="fund-amount" id="fundReserveAmt">$0</span>
                         </div>
                         <div class="fund-row total">
                             <span class="fund-label">Total</span>
@@ -2808,7 +2795,6 @@
                         <select id="costCategory">
                             <option value="infrastructure">Infrastructure</option>
                             <option value="payroll">Payroll</option>
-                            <option value="benefits">Benefits</option>
                             <option value="opex">OpEx</option>
                             <option value="marketing">Marketing</option>
                         </select>
@@ -3517,14 +3503,6 @@
             { id: 13, name: "G&A", category: "payroll", active: true, y1: 150000, y2: 400000, y3: 1000000, notes: "" },
             { id: 14, name: "Executive", category: "payroll", active: true, y1: 300000, y2: 500000, y3: 1000000, notes: "" },
 
-            // Benefits Costs (annual amounts)
-            { id: 28, name: "Health Insurance", category: "benefits", active: true, y1: 60000, y2: 180000, y3: 480000, notes: "Medical, dental, vision" },
-            { id: 29, name: "401(k) Match", category: "benefits", active: true, y1: 30000, y2: 90000, y3: 240000, notes: "4% match" },
-            { id: 30, name: "Paid Time Off", category: "benefits", active: true, y1: 40000, y2: 120000, y3: 320000, notes: "PTO accrual costs" },
-            { id: 31, name: "Payroll Taxes", category: "benefits", active: true, y1: 110000, y2: 330000, y3: 880000, notes: "FICA, FUTA, etc." },
-            { id: 32, name: "Workers Comp", category: "benefits", active: true, y1: 8000, y2: 24000, y3: 64000, notes: "" },
-            { id: 33, name: "Employee Perks", category: "benefits", active: true, y1: 20000, y2: 60000, y3: 160000, notes: "Meals, wellness, etc." },
-
             // OpEx Costs (annual amounts)
             { id: 15, name: "Office & Facilities", category: "opex", active: true, y1: 50000, y2: 150000, y3: 500000, notes: "" },
             { id: 16, name: "Software & Tools", category: "opex", active: true, y1: 30000, y2: 100000, y3: 300000, notes: "" },
@@ -3543,7 +3521,7 @@
             { id: 27, name: "Referral Programs", category: "marketing", active: true, y1: 50000, y2: 200000, y3: 1000000, notes: "" }
         ];
 
-        let nextCostId = 34;
+        let nextCostId = 28;
 
         // Growth curve functions
         function getGrowthValue(start, end, month, totalMonths, curve) {
@@ -3855,6 +3833,33 @@
                 .reduce((sum, c) => sum + (year === 1 ? c.y1 : year === 2 ? c.y2 : c.y3), 0);
         }
 
+        // Calculate costs for a category over a given number of months (for Use of Funds)
+        function getCategoryCostsForRunway(category, months) {
+            // Prorate annual costs: Y1 for months 1-12, Y2 for months 13-24, Y3 for months 25-36
+            let total = 0;
+            const items = costItems.filter(c => c.active && c.category === category);
+
+            items.forEach(item => {
+                // Months in Y1
+                const y1Months = Math.min(12, months);
+                total += (item.y1 / 12) * y1Months;
+
+                // Months in Y2
+                if (months > 12) {
+                    const y2Months = Math.min(12, months - 12);
+                    total += (item.y2 / 12) * y2Months;
+                }
+
+                // Months in Y3
+                if (months > 24) {
+                    const y3Months = Math.min(12, months - 24);
+                    total += (item.y3 / 12) * y3Months;
+                }
+            });
+
+            return total;
+        }
+
         function getTotalCosts() {
             return costItems
                 .filter(c => c.active)
@@ -3863,18 +3868,16 @@
 
         // Render costs view
         function renderCostsView() {
-            const categories = ['infrastructure', 'payroll', 'benefits', 'opex', 'marketing'];
+            const categories = ['infrastructure', 'payroll', 'opex', 'marketing'];
             const categoryContainers = {
                 'infrastructure': 'infraCostItems',
                 'payroll': 'payrollCostItems',
-                'benefits': 'benefitsCostItems',
                 'opex': 'opexCostItems',
                 'marketing': 'marketingCostItems'
             };
             const categoryTotalIds = {
                 'infrastructure': 'infraTotal',
                 'payroll': 'payrollTotal',
-                'benefits': 'benefitsTotal',
                 'opex': 'opexTotal',
                 'marketing': 'marketingTotal'
             };
@@ -3932,6 +3935,11 @@
             document.getElementById('costTotalY2').textContent = formatCurrency(calculateCostsByYear(2));
             document.getElementById('costTotalY3').textContent = formatCurrency(calculateCostsByYear(3));
             document.getElementById('costTotalAll').textContent = formatCurrency(getTotalCosts());
+
+            // Update Use of Funds when costs change
+            if (typeof updateFundsAllocation === 'function') {
+                updateFundsAllocation();
+            }
         }
 
         function toggleCost(id) {
@@ -4014,10 +4022,11 @@
             waitlistSize: 0,
             productStage: 'MVP',
             fundAllocation: {
-                engineering: 40,
-                marketing: 25,
-                operations: 20,
-                reserve: 15
+                infrastructure: 0,
+                payroll: 0,
+                marketing: 0,
+                opex: 0,
+                reserve: 10
             },
             milestones: [
                 { month: 6, text: 'Launch MVP to market' },
@@ -4067,33 +4076,62 @@
         }
 
         function updateFundsAllocation() {
-            const eng = parseInt(document.getElementById('fundEngineering').value) || 0;
-            const mkt = parseInt(document.getElementById('fundMarketing').value) || 0;
-            const ops = parseInt(document.getElementById('fundOperations').value) || 0;
-            const res = parseInt(document.getElementById('fundReserve').value) || 0;
+            const runway = investmentData.targetRunway || 18;
+            const raising = investmentData.raisingAmount;
+            const reservePercent = parseInt(document.getElementById('fundReserve').value) || 0;
+
+            // Calculate costs for runway period by category
+            const infraCost = getCategoryCostsForRunway('infrastructure', runway);
+            const payrollCost = getCategoryCostsForRunway('payroll', runway);
+            const marketingCost = getCategoryCostsForRunway('marketing', runway);
+            const opexCost = getCategoryCostsForRunway('opex', runway);
+
+            // Total projected costs (excluding reserve)
+            const totalCosts = infraCost + payrollCost + marketingCost + opexCost;
+
+            // Reserve amount from raising
+            const reserveAmount = raising * (reservePercent / 100);
+
+            // Calculate percentages based on raising amount
+            const infraPercent = raising > 0 ? (infraCost / raising * 100) : 0;
+            const payrollPercent = raising > 0 ? (payrollCost / raising * 100) : 0;
+            const marketingPercent = raising > 0 ? (marketingCost / raising * 100) : 0;
+            const opexPercent = raising > 0 ? (opexCost / raising * 100) : 0;
 
             investmentData.fundAllocation = {
-                engineering: eng,
-                marketing: mkt,
-                operations: ops,
-                reserve: res
+                infrastructure: infraPercent,
+                payroll: payrollPercent,
+                marketing: marketingPercent,
+                opex: opexPercent,
+                reserve: reservePercent
             };
 
-            const total = eng + mkt + ops + res;
-            const raising = investmentData.raisingAmount;
+            // Update display - percentages
+            document.getElementById('fundInfraPercent').textContent = infraPercent.toFixed(1) + '%';
+            document.getElementById('fundPayrollPercent').textContent = payrollPercent.toFixed(1) + '%';
+            document.getElementById('fundMarketingPercent').textContent = marketingPercent.toFixed(1) + '%';
+            document.getElementById('fundOpexPercent').textContent = opexPercent.toFixed(1) + '%';
 
-            // Update amounts
-            document.getElementById('fundEngineeringAmt').textContent = formatCurrency(raising * eng / 100);
-            document.getElementById('fundMarketingAmt').textContent = formatCurrency(raising * mkt / 100);
-            document.getElementById('fundOperationsAmt').textContent = formatCurrency(raising * ops / 100);
-            document.getElementById('fundReserveAmt').textContent = formatCurrency(raising * res / 100);
+            // Update display - amounts
+            document.getElementById('fundInfraAmt').textContent = formatCurrency(infraCost);
+            document.getElementById('fundPayrollAmt').textContent = formatCurrency(payrollCost);
+            document.getElementById('fundMarketingAmt').textContent = formatCurrency(marketingCost);
+            document.getElementById('fundOpexAmt').textContent = formatCurrency(opexCost);
+            document.getElementById('fundReserveAmt').textContent = formatCurrency(reserveAmount);
 
             // Update total
+            const totalPercent = infraPercent + payrollPercent + marketingPercent + opexPercent + reservePercent;
             const totalEl = document.getElementById('fundTotalPercent');
-            totalEl.textContent = total + '%';
-            totalEl.style.color = total === 100 ? 'var(--accent-cyan)' : '#ff6b6b';
+            totalEl.textContent = totalPercent.toFixed(1) + '%';
 
-            document.getElementById('fundTotalAmt').textContent = formatCurrency(raising);
+            // Color based on whether costs fit within raising amount
+            if (totalCosts + reserveAmount <= raising) {
+                totalEl.style.color = 'var(--accent-cyan)';
+            } else {
+                totalEl.style.color = '#ff6b6b'; // Over budget
+            }
+
+            document.getElementById('fundTotalAmt').textContent = formatCurrency(totalCosts + reserveAmount);
 
             renderFundsChart();
             saveState();
@@ -4107,19 +4145,20 @@
                 fundsChart.destroy();
             }
 
-            const { engineering, marketing, operations, reserve } = investmentData.fundAllocation;
+            const { infrastructure, payroll, marketing, opex, reserve } = investmentData.fundAllocation;
 
             fundsChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Engineering', 'Marketing', 'Operations', 'Reserve'],
+                    labels: ['Infrastructure', 'Payroll', 'Marketing', 'OpEx', 'Reserve'],
                     datasets: [{
-                        data: [engineering, marketing, operations, reserve],
+                        data: [infrastructure, payroll, marketing, opex, reserve],
                         backgroundColor: [
                             'rgba(0, 245, 212, 0.8)',
                             'rgba(247, 37, 133, 0.8)',
+                            'rgba(123, 44, 191, 0.8)',
                             'rgba(254, 228, 64, 0.8)',
-                            'rgba(123, 44, 191, 0.8)'
+                            'rgba(100, 100, 100, 0.8)'
                         ],
                         borderWidth: 0
                     }]

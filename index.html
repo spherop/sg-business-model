@@ -1487,6 +1487,11 @@
             color: var(--accent-purple);
         }
 
+        .cost-category-badge.benefits {
+            background: rgba(72, 187, 120, 0.15);
+            color: #48bb78;
+        }
+
         .cost-category-totals {
             display: flex;
             gap: 20px;
@@ -2563,6 +2568,24 @@
                 </div>
             </div>
 
+            <!-- Benefits Costs -->
+            <div class="cost-category" id="benefitsCosts">
+                <div class="cost-category-header">
+                    <div class="cost-category-title">
+                        <span class="cost-category-badge benefits">Benefits</span>
+                        <span class="cost-category-name">Employee Benefits & Perks</span>
+                    </div>
+                    <div class="cost-category-totals">
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y1</span><span class="cost-cat-amount" id="benefitsTotalY1">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y2</span><span class="cost-cat-amount" id="benefitsTotalY2">$0</span></div>
+                        <div class="cost-cat-year"><span class="cost-cat-label">Y3</span><span class="cost-cat-amount" id="benefitsTotalY3">$0</span></div>
+                    </div>
+                </div>
+                <div class="cost-items-grid" id="benefitsCostItems">
+                    <!-- Cost items rendered by JS -->
+                </div>
+            </div>
+
             <!-- OpEx Costs -->
             <div class="cost-category" id="opexCosts">
                 <div class="cost-category-header">
@@ -2785,6 +2808,7 @@
                         <select id="costCategory">
                             <option value="infrastructure">Infrastructure</option>
                             <option value="payroll">Payroll</option>
+                            <option value="benefits">Benefits</option>
                             <option value="opex">OpEx</option>
                             <option value="marketing">Marketing</option>
                         </select>
@@ -3493,6 +3517,14 @@
             { id: 13, name: "G&A", category: "payroll", active: true, y1: 150000, y2: 400000, y3: 1000000, notes: "" },
             { id: 14, name: "Executive", category: "payroll", active: true, y1: 300000, y2: 500000, y3: 1000000, notes: "" },
 
+            // Benefits Costs (annual amounts)
+            { id: 28, name: "Health Insurance", category: "benefits", active: true, y1: 60000, y2: 180000, y3: 480000, notes: "Medical, dental, vision" },
+            { id: 29, name: "401(k) Match", category: "benefits", active: true, y1: 30000, y2: 90000, y3: 240000, notes: "4% match" },
+            { id: 30, name: "Paid Time Off", category: "benefits", active: true, y1: 40000, y2: 120000, y3: 320000, notes: "PTO accrual costs" },
+            { id: 31, name: "Payroll Taxes", category: "benefits", active: true, y1: 110000, y2: 330000, y3: 880000, notes: "FICA, FUTA, etc." },
+            { id: 32, name: "Workers Comp", category: "benefits", active: true, y1: 8000, y2: 24000, y3: 64000, notes: "" },
+            { id: 33, name: "Employee Perks", category: "benefits", active: true, y1: 20000, y2: 60000, y3: 160000, notes: "Meals, wellness, etc." },
+
             // OpEx Costs (annual amounts)
             { id: 15, name: "Office & Facilities", category: "opex", active: true, y1: 50000, y2: 150000, y3: 500000, notes: "" },
             { id: 16, name: "Software & Tools", category: "opex", active: true, y1: 30000, y2: 100000, y3: 300000, notes: "" },
@@ -3511,7 +3543,7 @@
             { id: 27, name: "Referral Programs", category: "marketing", active: true, y1: 50000, y2: 200000, y3: 1000000, notes: "" }
         ];
 
-        let nextCostId = 28;
+        let nextCostId = 34;
 
         // Growth curve functions
         function getGrowthValue(start, end, month, totalMonths, curve) {
@@ -3831,16 +3863,18 @@
 
         // Render costs view
         function renderCostsView() {
-            const categories = ['infrastructure', 'payroll', 'opex', 'marketing'];
+            const categories = ['infrastructure', 'payroll', 'benefits', 'opex', 'marketing'];
             const categoryContainers = {
                 'infrastructure': 'infraCostItems',
                 'payroll': 'payrollCostItems',
+                'benefits': 'benefitsCostItems',
                 'opex': 'opexCostItems',
                 'marketing': 'marketingCostItems'
             };
             const categoryTotalIds = {
                 'infrastructure': 'infraTotal',
                 'payroll': 'payrollTotal',
+                'benefits': 'benefitsTotal',
                 'opex': 'opexTotal',
                 'marketing': 'marketingTotal'
             };

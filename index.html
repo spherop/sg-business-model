@@ -3065,8 +3065,16 @@
                     <input type="number" id="newStreamPrice" placeholder="9.99">
                 </div>
                 <div class="input-group">
-                    <label>Adoption Rate (%)</label>
-                    <input type="number" id="newStreamAdoption" placeholder="10" max="100">
+                    <label>Adoption Y1 (%)</label>
+                    <input type="number" id="newStreamAdoptionY1" placeholder="5" max="100">
+                </div>
+                <div class="input-group">
+                    <label>Adoption Y2 (%)</label>
+                    <input type="number" id="newStreamAdoptionY2" placeholder="10" max="100">
+                </div>
+                <div class="input-group">
+                    <label>Adoption Y3 (%)</label>
+                    <input type="number" id="newStreamAdoptionY3" placeholder="15" max="100">
                 </div>
                 <div class="input-group">
                     <label>Applies To</label>
@@ -3291,7 +3299,9 @@
                 type: "recurring",
                 active: true,
                 price: 9.99,
-                adoption: 5,
+                adoptionY1: 5,
+                adoptionY2: 8,
+                adoptionY3: 12,
                 target: "listeners",
                 platformTake: 100,
                 startYear: 1,
@@ -3304,7 +3314,9 @@
                 type: "recurring",
                 active: true,
                 price: 25,
-                adoption: 15,
+                adoptionY1: 15,
+                adoptionY2: 20,
+                adoptionY3: 25,
                 target: "artists",
                 platformTake: 100,
                 startYear: 1,
@@ -3317,7 +3329,9 @@
                 type: "transaction",
                 active: true,
                 price: 8,
-                adoption: 3,
+                adoptionY1: 3,
+                adoptionY2: 5,
+                adoptionY3: 8,
                 target: "listeners",
                 platformTake: 15,
                 frequency: 12,
@@ -3331,7 +3345,9 @@
                 type: "recurring",
                 active: false,
                 price: 7.99,
-                adoption: 2,
+                adoptionY1: 2,
+                adoptionY2: 3,
+                adoptionY3: 5,
                 target: "listeners",
                 platformTake: 100,
                 startYear: 2,
@@ -3344,7 +3360,9 @@
                 type: "transaction",
                 active: true,
                 price: 0.06,
-                adoption: 80,
+                adoptionY1: 80,
+                adoptionY2: 85,
+                adoptionY3: 90,
                 target: "listeners",
                 platformTake: 100,
                 frequency: 100,
@@ -3358,7 +3376,9 @@
                 type: "transaction",
                 active: false,
                 price: 35,
-                adoption: 2,
+                adoptionY1: 2,
+                adoptionY2: 3,
+                adoptionY3: 5,
                 target: "listeners",
                 platformTake: 12,
                 frequency: 2,
@@ -3372,7 +3392,9 @@
                 type: "transaction",
                 active: false,
                 price: 50,
-                adoption: 10,
+                adoptionY1: 10,
+                adoptionY2: 15,
+                adoptionY3: 20,
                 target: "artists",
                 platformTake: 100,
                 frequency: 1,
@@ -3386,7 +3408,9 @@
                 type: "transaction",
                 active: false,
                 price: 1.29,
-                adoption: 5,
+                adoptionY1: 5,
+                adoptionY2: 8,
+                adoptionY3: 10,
                 target: "listeners",
                 platformTake: 30,
                 frequency: 4,
@@ -3400,7 +3424,9 @@
                 type: "transaction",
                 active: false,
                 price: 15,
-                adoption: 5,
+                adoptionY1: 5,
+                adoptionY2: 8,
+                adoptionY3: 12,
                 target: "artists",
                 platformTake: 30,
                 frequency: 12,
@@ -3414,7 +3440,9 @@
                 type: "transaction",
                 active: false,
                 price: 25,
-                adoption: 20,
+                adoptionY1: 20,
+                adoptionY2: 25,
+                adoptionY3: 30,
                 target: "artists",
                 platformTake: 100,
                 frequency: 2,
@@ -3428,7 +3456,9 @@
                 type: "recurring",
                 active: false,
                 price: 199,
-                adoption: 2,
+                adoptionY1: 2,
+                adoptionY2: 3,
+                adoptionY3: 5,
                 target: "artists",
                 platformTake: 100,
                 startYear: 3,
@@ -3441,7 +3471,9 @@
                 type: "transaction",
                 active: false,
                 price: 500,
-                adoption: 5,
+                adoptionY1: 5,
+                adoptionY2: 8,
+                adoptionY3: 10,
                 target: "artists",
                 platformTake: 10,
                 frequency: 4,
@@ -3455,7 +3487,9 @@
                 type: "transaction",
                 active: false,
                 price: 40,
-                adoption: 1,
+                adoptionY1: 1,
+                adoptionY2: 2,
+                adoptionY3: 3,
                 target: "listeners",
                 platformTake: 8,
                 frequency: 2,
@@ -3469,7 +3503,9 @@
                 type: "transaction",
                 active: false,
                 price: 250,
-                adoption: 8,
+                adoptionY1: 8,
+                adoptionY2: 10,
+                adoptionY3: 12,
                 target: "artists",
                 platformTake: 10,
                 frequency: 2,
@@ -3594,7 +3630,12 @@
                                     stream.target === 'listeners' ? listeners :
                                     artists + listeners;
 
-                    const adoptingUsers = baseUsers * (stream.adoption / 100);
+                    // Get adoption rate for the current year
+                    const adoption = year === 1 ? (stream.adoptionY1 ?? stream.adoption ?? 0) :
+                                     year === 2 ? (stream.adoptionY2 ?? stream.adoption ?? 0) :
+                                     (stream.adoptionY3 ?? stream.adoption ?? 0);
+
+                    const adoptingUsers = baseUsers * (adoption / 100);
                     const platformRevenue = stream.price * (stream.platformTake / 100);
 
                     if (stream.type === 'recurring') {
@@ -4242,7 +4283,12 @@
                                     stream.target === 'listeners' ? d.listeners :
                                     d.artists + d.listeners;
 
-                    const adoptingUsers = baseUsers * (stream.adoption / 100);
+                    // Get adoption rate for the current year
+                    const adoption = d.year === 1 ? (stream.adoptionY1 ?? stream.adoption ?? 0) :
+                                     d.year === 2 ? (stream.adoptionY2 ?? stream.adoption ?? 0) :
+                                     (stream.adoptionY3 ?? stream.adoption ?? 0);
+
+                    const adoptingUsers = baseUsers * (adoption / 100);
                     const platformRevenue = stream.price * (stream.platformTake / 100);
 
                     let monthlyRev;
@@ -4309,9 +4355,19 @@
                                        onchange="updateStream(${stream.id}, 'price', this.value)">
                             </div>
                             <div class="input-group">
-                                <label>Adoption (%)</label>
-                                <input type="number" value="${stream.adoption}" max="100"
-                                       onchange="updateStream(${stream.id}, 'adoption', this.value)">
+                                <label>Adopt Y1 (%)</label>
+                                <input type="number" value="${stream.adoptionY1 ?? stream.adoption ?? 0}" max="100"
+                                       onchange="updateStream(${stream.id}, 'adoptionY1', this.value)">
+                            </div>
+                            <div class="input-group">
+                                <label>Adopt Y2 (%)</label>
+                                <input type="number" value="${stream.adoptionY2 ?? stream.adoption ?? 0}" max="100"
+                                       onchange="updateStream(${stream.id}, 'adoptionY2', this.value)">
+                            </div>
+                            <div class="input-group">
+                                <label>Adopt Y3 (%)</label>
+                                <input type="number" value="${stream.adoptionY3 ?? stream.adoption ?? 0}" max="100"
+                                       onchange="updateStream(${stream.id}, 'adoptionY3', this.value)">
                             </div>
                             <div class="input-group">
                                 <label>Platform %</label>
@@ -4941,7 +4997,9 @@
             const type = document.getElementById('newStreamType').value;
             const phase = document.getElementById('newStreamPhase').value;
             const price = parseFloat(document.getElementById('newStreamPrice').value) || 0;
-            const adoption = parseFloat(document.getElementById('newStreamAdoption').value) || 0;
+            const adoptionY1 = parseFloat(document.getElementById('newStreamAdoptionY1').value) || 0;
+            const adoptionY2 = parseFloat(document.getElementById('newStreamAdoptionY2').value) || 0;
+            const adoptionY3 = parseFloat(document.getElementById('newStreamAdoptionY3').value) || 0;
             const target = document.getElementById('newStreamTarget').value;
             const startYear = parseInt(document.getElementById('newStreamStartYear').value) || 1;
             const startMonth = parseInt(document.getElementById('newStreamStartMonth').value) || 1;
@@ -4958,7 +5016,9 @@
                 type,
                 active: true,
                 price,
-                adoption,
+                adoptionY1,
+                adoptionY2,
+                adoptionY3,
                 target,
                 platformTake: 100,
                 frequency: type === 'recurring' ? undefined : 12,
@@ -4975,7 +5035,9 @@
             // Clear form
             document.getElementById('newStreamName').value = '';
             document.getElementById('newStreamPrice').value = '';
-            document.getElementById('newStreamAdoption').value = '';
+            document.getElementById('newStreamAdoptionY1').value = '';
+            document.getElementById('newStreamAdoptionY2').value = '';
+            document.getElementById('newStreamAdoptionY3').value = '';
             document.getElementById('newStreamStartYear').value = '1';
             document.getElementById('newStreamStartMonth').value = '1';
         }
